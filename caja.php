@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<!--[if IE 6]>
+<html id="ie6" dir="ltr" lang="en-US">
+<![endif]-->
+<!--[if IE 7]>
+<html id="ie7" dir="ltr" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html id="ie8" dir="ltr" lang="en-US">
+<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html dir="ltr" lang="es	bgtv">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-16" />
+<meta name="viewport" content="width=device-width" />
+<title>| HOSPITAL LA  CARLOTA , SIMA |</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="stylesheet" type="text/css" media="all" href="http://localhost/wordpress/wp-content/themes/twentyeleven/style.css" />
+<link rel="pingback" href="http://localhost/wordpress/xmlrpc.php" />
+<!--[if lt IE 9]>
+<script src="http://localhost/wordpress/wp-content/themes/twentyeleven/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta name='robots' content='noindex,nofollow' />
+
+<link rel="alternate" type="application/rss+xml" title="HOSPITAL LA  CARLOTA , SIMA &raquo; Feed" href="http://localhost/wordpress/?feed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="HOSPITAL LA  CARLOTA , SIMA &raquo; Comments Feed" href="http://localhost/wordpress/?feed=comments-rss2" />
+<link rel='stylesheet' id='admin-bar-css'  href='http://localhost/wordpress/wp-includes/css/admin-bar.css?ver=20110622' type='text/css' media='all' />
+<script type='text/javascript' src='http://localhost/wordpress/wp-includes/js/l10n.js?ver=20101110'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://localhost/wordpress/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://localhost/wordpress/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='HOSPITAL LA  CARLOTA , SIMA' href='http://localhost/wordpress' />
+<meta name="generator" content="WordPress 3.2.1" />
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<style type="text/css" media="print">#wpadminbar { display:none; }</style>
+<style type="text/css" media="screen">
+	html { margin-top: 28px !important; }
+	* html body { margin-top: 28px !important; }
+</style>
+
+</head>
+
+<body class="home blog logged-in admin-bar single-author two-column right-sidebar">
+<div id="page" class="hfeed">
+	<header id="branding" role="banner">
+			<hgroup>
+				<h1 id="site-title"><span><a href="http://localhost/wordpress/" title="HOSPITAL LA  CARLOTA , SIMA" rel="home">HOSPITAL LA  CARLOTA , SIMA</a></span></h1>
+				<h2 id="site-description"></h2>
+			</hgroup>
+
+						<a href="http://localhost/wordpress/">
+
+									<img src="http://localhost/wordpress/wp-content/themes/twentyeleven/images/headers/pine-cone.jpg" width="1000" height="288" alt="" />
+							</a>
+			
+								<form method="get" id="searchform" action="http://localhost/wordpress/">
+		<label for="s" class="assistive-text">Buscar</label>
+		<input type="text" class="field" name="s" id="s" placeholder="Buscar" />
+		<input type="submit" class="submit" name="submit" id="searchsubmit" value="Search" />
+	</form>
+
+			
+			<nav id="access" role="navigation">
+
+				<h3 class="assistive-text">Main menu</h3>
+								<div class="skip-link"><a class="assistive-text" href="#content" title="Skip to primary content">Skip to primary content</a></div>
+				<div class="skip-link"><a class="assistive-text" href="#secondary" title="Skip to secondary content">Skip to secondary content</a></div>
+<div class="menu"><ul><li class="current_page_item">
+            <a href="http://localhost/wordpress/" title="Home">Abir caja</a></li>
+        <li class="page_item page-item-4">
+
+            <a href="http://localhost/wordpress/?page_id=4" title="x|">Corte de caja</a></li>
+
+        <li class="page_item page-item-2"><a href="http://localhost/wordpress/?page_id=2" title="Sample Page">Reportes</a>
+		
+		<ul></li>
+		
+         <li class="page_item page-item-2"><a href="http://localhost/wordpress/?page_id=2" title="Sample Page">Estado de cuenta</a>
+		 <li class="page_item page-item-2"><a href="http://localhost/wordpress/?page_id=2" title="Sample Page">Reporte de cajeros</a>
+		 <li class="page_item page-item-2"><a href="http://localhost/wordpress/?page_id=2" title="Sample Page">Otros Px</a>
+		
+			</nav><!-- #access -->
+	</header><!-- #branding -->
+
+
+	<div id="main">
+
+		<div id="primary">
+			<div id="content" role="main">
+
+			
+				
+								
+					
+	<article id="post-1" class="post-1 post type-post status-publish format-standard hentry category-uncategorized">
+		<header class="entry-header">
+						<h1 class="entry-title"><a href="http://localhost/wordpress/?p=1" title="Permalink to Hello world!" rel="bookmark"></a></h1>
+			
+				<div class="entry-meta"></div>
+						<!-- .entry-meta -->
+
+			
+				<div class="comments-link"></div>
+		</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>&nbsp;</p>
+		</div><!-- .entry-content -->
+		
+		<footer class="entry-meta"></footer>
+		<!-- #entry-meta -->
+	</article><!-- #post-1 -->
+
+				
+				
+			
+			</div><!-- #content -->
+
+		</div><!-- #primary -->
+
+		<div id="secondary" class="widget-area" role="complementary">
+			
+		  <aside id="archives" class="widget">
+
+					<h3 class="widget-title">&nbsp;</h3>
+				</aside>
+
+				<aside id="meta" class="widget">
+					<h3 class="widget-title">&nbsp;</h3>
+
+		  </aside>
+
+					</div><!-- #secondary .widget-area -->
+
+	</div><!-- #main -->
+
+	<footer id="colophon" role="contentinfo">
+
+			
+
+			<div id="site-generator">
+								<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform" rel="generator"></a>			</div>
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type='text/javascript' src='http://localhost/wordpress/wp-includes/js/admin-bar.js?ver=20110131'></script>
+
+		<div id="wpadminbar">
+			<div class="quicklinks">
+				<ul>
+													
+		<li id="wp-admin-bar-my-account-with-avatar" class="menupop">
+			<a href="http://localhost/wordpress/wp-admin/profile.php"><span><img alt='' src='http://0.gravatar.com/avatar/63d4d03bcde8fc3640b06891df0168f3?s=16&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D16&amp;r=G' class='avatar avatar-16 photo' height='16' width='16' />Administración</span></a>
+
+						<ul>
+											
+		<li id="wp-admin-bar-edit-profile" class="">
+			<a href="http://localhost/wordpress/wp-admin/profile.php">Informes</a>					</li>											
+		<li id="wp-admin-bar-logout" class="">
+			<a href="http://localhost/wordpress/wp-login.php?action=logout&#038;_wpnonce=87b7c0c0aa">Reportes</a>					</li>
+
+                                  					</li>
+		 </ul>
+
+			
+					</li>													
+		<li id="wp-admin-bar-new-content" class="menupop">
+
+			<a href="http://localhost/wordpress/wp-admin/post-new.php?post_type=post"><span>Ingresos</span></a>
+
+						<ul>
+											
+		<li id="wp-admin-bar-new-post" class="">
+
+			<a href="http://localhost/wordpress/wp-admin/post-new.php?post_type=post">Caja</a>
+
+			
+					</li>											
+		<li id="wp-admin-bar-new-page" class="">
+			<a href="http://localhost/wordpress/wp-admin/post-new.php?post_type=page">Cuentas por cobrar</a>
+
+			
+			</li>											
+		<li id="wp-admin-bar-new-page" class="">
+			<a href="http://localhost/wordpress/wp-admin/post-new.php?post_type=page">Convenios</a>
+
+					</li>											
+		
+			
+							</li>							</ul>
+			
+				  </li>													
+		<li id="wp-admin-bar-comments" class="">
+
+			
+
+			
+				  												
+		<li id="wp-admin-bar-appearance" class="menupop">
+			<a href="http://localhost/wordpress/wp-admin/themes.php"><span>Punto de Venta</span></a>
+			
+			<ul></li>
+											
+		
+			
+			<li id="wp-admin-bar-logout" class="">
+			
+			<a href="http://localhost/wordpress/wp-login.php?action=logout&#038;_wpnonce=87b7c0c0aa">Admisiones</a>	
+			<li id="wp-admin-bar-logout" class="">
+			
+			<a href="http://localhost/wordpress/wp-login.php?action=logout&#038;_wpnonce=87b7c0c0aa">Beneficencia</a>	
+			<li id="wp-admin-bar-logout" class="">
+			
+			<a href="http://localhost/wordpress/wp-login.php?action=logout&#038;_wpnonce=87b7c0c0aa">Consulta externa</a>
+			<li id="wp-admin-bar-logout" class="">
+			
+			<a href="http://localhost/wordpress/wp-login.php?action=logout&#038;_wpnonce=87b7c0c0aa">CEYE</a>
+			<li id="wp-admin-bar-logout" class="">
+			
+			<a href="http://localhost/wordpress/wp-login.php?action=logout&#038;_wpnonce=87b7c0c0aa">Farmacia</a>
+			<li id="wp-admin-bar-logout" class="">
+			
+			<a href="http://localhost/wordpress/wp-login.php?action=logout&#038;_wpnonce=87b7c0c0aa">Fisioterapia</a>
+			<li id="wp-admin-bar-logout" class="">
+			
+			<a href="http://localhost/wordpress/wp-login.php?action=logout&#038;_wpnonce=87b7c0c0aa">Ginecologia</a>	
+			<li id="wp-admin-bar-logout" class="">
+			
+			<a href="http://localhost/wordpress/wp-login.php?action=logout&#038;_wpnonce=87b7c0c0aa">Laboratorio</a>
+			<li id="wp-admin-bar-logout" class="">
+			
+			<a href="http://localhost/wordpress/wp-login.php?action=logout&#038;_wpnonce=87b7c0c0aa">Luz y vida</a>		
+			<li id="wp-admin-bar-logout" class="">
+			
+			<a href="http://localhost/wordpress/wp-login.php?action=logout&#038;_wpnonce=87b7c0c0aa">Prequirurjico</a>
+			<li id="wp-admin-bar-logout" class="">
+			
+			<a href="http://localhost/wordpress/wp-login.php?action=logout&#038;_wpnonce=87b7c0c0aa">Quirofano</a>	
+			<li id="wp-admin-bar-logout" class="">
+			
+			<a href="http://localhost/wordpress/wp-login.php?action=logout&#038;_wpnonce=87b7c0c0aa">Rayos X</a>	
+			<li id="wp-admin-bar-logout" class="">
+			
+			<a href="http://localhost/wordpress/wp-login.php?action=logout&#038;_wpnonce=87b7c0c0aa">Sala 1</a>		
+			<li id="wp-admin-bar-logout" class="">
+			
+			<a href="http://localhost/wordpress/wp-login.php?action=logout&#038;_wpnonce=87b7c0c0aa">Urgencias</a>	
+			
+																																																		
+                                  								
+			</li>											
+		
+			
+							</li>							</ul>
+			
+				  </li>								
+			
+			<li id="wp-admin-bar-appearance" class="menupop">
+		
+			<a href="http://localhost/wordpress/wp-admin/themes.php"><span>Inventarios</span></a>
+
+
+						<ul>
+						
+											
+		<li id="wp-admin-bar-themes" class="">
+			<a href="http://localhost/wordpress/wp-admin/themes.php">Compras</a>
+
+			
+					</li>											
+		<li id="wp-admin-bar-widgets" class="">
+			<a href="http://localhost/wordpress/wp-admin/widgets.php">Cendis</a>
+
+			
+					<ul></li>
+															
+		<li id="wp-admin-bar-menus" class="">
+
+			<a href="http://localhost/wordpress/wp-admin/nav-menus.php">Producto</a>
+
+					</li>											
+		<li id="wp-admin-bar-menus" class="">
+
+			<a href="http://localhost/wordpress/wp-admin/nav-menus.php">Servicio</a>
+			
+					</li>											
+		
+			
+			
+			
+			
+			
+						
+					</li>							</ul>
+			
+				  </li>									</ul>
+
+			</div>
+
+			<div id="adminbarsearch-wrap">
+				<form action="http://localhost/wordpress" method="get" id="adminbarsearch">
+					<input class="adminbar-input" name="s" id="adminbar-search" type="text" value="" maxlength="150" />
+
+					<input type="submit" class="adminbar-button" value="Buscar"/>
+				</form>
+			</div>
+		</div>
+
+		
+</body>
+</html>
