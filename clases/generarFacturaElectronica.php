@@ -174,6 +174,8 @@ and
   numSolicitud='".$_GET['numSolicitud']."'
   and
   naturaleza='C'
+  and
+  tipoTransaccion=''
   ";
  
   $result7=mysql_db_query($basedatos,$sSQL7);
@@ -193,6 +195,8 @@ and
 and
 
   naturaleza='A'
+  and
+  tipoTransaccion=''
   ";
  
   $result7d=mysql_db_query($basedatos,$sSQL7d);
@@ -215,6 +219,8 @@ and
   naturaleza='C'
   and
   iva>0
+  and
+  tipoTransaccion=''
   ";
  
   $result7iva=mysql_db_query($basedatos,$sSQL7iva);
@@ -236,6 +242,8 @@ and
   naturaleza='A'
   and
   iva>0
+  and
+  tipoTransaccion=''
   ";
  
   $result7diva=mysql_db_query($basedatos,$sSQL7diva);
@@ -285,6 +293,8 @@ WHERE
 entidad='".$entidad."'
     and
     numSolicitud='".$_GET['numSolicitud']."'
+        and
+  tipoTransaccion=''
 group by folioVenta
 ";
  
@@ -452,6 +462,7 @@ WHERE
 entidad='".$entidad."'
     and
     numSolicitud='".$_GET['numSolicitud']."'
+        
 group by folioVenta
 ";
  
@@ -621,7 +632,8 @@ WHERE
 entidad='".$entidad."'
 and
 numSolicitud='".$_GET['numSolicitud']."'
-
+and
+  tipoTransaccion=''
 group by gpoProducto";
 
 
@@ -654,6 +666,8 @@ and
   gpoProducto='".$C."'   
   and
   naturaleza='C'
+  and
+  tipoTransaccion=''
   ";
  
   $result7=mysql_db_query($basedatos,$sSQL7);
@@ -674,6 +688,8 @@ and
   gpoProducto='".$C."'   
     and
   naturaleza='A'
+  and
+  tipoTransaccion=''
   ";
  
   $result7d=mysql_db_query($basedatos,$sSQL7d);

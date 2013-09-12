@@ -779,7 +779,7 @@ if($myrowab['digitosFactura']>0){
     
    $actualiza = "UPDATE facturaGrupos
 set
-status='facturado',numFactura='".$numFactura."'
+status='facturado',numFactura='".$numFactura."' $
 
 where
 entidad='".$entidad."'
