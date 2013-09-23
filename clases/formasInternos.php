@@ -3,19 +3,10 @@
 class solicitar{
 public function solicitaArticulos($entidad,$almacenSolicitante,$ID_EJERCICIOM,$dia,$fecha1,$hora1,$usuario,$numeroPaciente,$seguro,$credencial,$medico,$almacenSolicitante,$nCuenta,$tipoCargo,$almacenDestino,$tipoPaciente,$basedatos){
 
-
-$sSQL6="SELECT almacen
-FROM
-almacenes
-WHERE
-
-entidad='".$entidad."' 
-and centroDistribucion='si'
-  ";
-  $result6=mysql_db_query($basedatos,$sSQL6);
-  $myrow6 = mysql_fetch_array($result6);
-  
-$almacenPrincipal=$myrow6['almacen'];//necesitamos definirlo desde el cat�logo de almacenes
+//QUIEN ES CENTRO DE DISTRIBUCION DE ESTA ENTIDAD    
+$cendis=new whoisCendis();
+$centroDistribucion=$cendis->cendis($entidad,$basedatos);   
+$almacenPrincipal=$centroDistribucion;//necesitamos definirlo desde el cat�logo de almacenes
 ?>
 
 
@@ -1492,7 +1483,7 @@ $ivaBeneficenciaT=$ivaParticuarT-$ivaBeneficenciat;
         <?php 
 					$descripcion=new articulosDetalles();
 					$descripcion->descripcion($entidad,$keyCAP,$numeroE,$nCuenta,$codigo,$basedatos);
-                                        if($sSQL3113cd['afectaExistencias']=='si' and $myrow['descripcion1']!=NULL){
+                                        if($myrow3113cd['afectaExistencias']=='si' and $myrow['descripcion1']!=NULL){
                                         echo '</br>';   
                                         echo '<span >'. 'Sustancia: '.$myrow['sustancia'].'</span>';		
                                         }else if($myrow['descripcion1']!=NULL){
@@ -1522,11 +1513,12 @@ echo '</br>';
                 echo '<span >'. 'Precio Base: $'.number_format($precioNormal+$ivaNormal,2).'</span>';
 		
                 
-                
+                if($centroDistribucion!=$almacen){
                  if($myrow['cajaCon']>0){
                                         echo '</br>';   
                                         echo '<span class="informativo">'. 'Caja Con: '.$myrow['cajaCon'].' !</span>';		
                                         }
+                }
                                         
                 if($myrow['ventaGranel']=='si' and $myrow['cantidadSurtir']>0){
                                         echo '</br>';   

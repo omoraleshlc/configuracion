@@ -3314,6 +3314,13 @@ switch ($myrow8a['modoventa']) {
     
     
 public function modoventa($almacen,$priceLevel,$codigo,$entidad,$keyPA,$basedatos){
+    
+//QUIEN ES CENTRO DE DISTRIBUCION DE ESTA ENTIDAD    
+$cendis=new whoisCendis();
+$centroDistribucion=$cendis->cendis($entidad,$basedatos);     
+    
+
+if($centroDistribucion!=$almacen){
 #LAS CAJAS SON EXCLUSIVA DE CENDIS
 $sSQL8b1= "
 SELECT  almacenExistencias
@@ -3394,7 +3401,7 @@ $priceLevel/=$myrow8a['cantidadSurtir'];
 $priceLevel/=$myrow8['cajaCon'];  
 }//cierra medicamentos sueltos
 }
-
+}//solo botiquines pueden cargar cajas con
 
 
 

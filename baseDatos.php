@@ -6,12 +6,12 @@ static public function conecta(){
 
 $usuario="omorales";
 $passwd='salermo';
-$servidor='10.2.2.32';
+$servidor='192.168.1.11';
 
 
 /*
 $usuario="omorales";
-$passwd='wolf3333';
+$passwd='salermo';
 $servidor='localhost';
 */
 

@@ -463,6 +463,7 @@ entidad='".$entidad."'
     and
     numSolicitud='".$_GET['numSolicitud']."'
         
+
 group by folioVenta
 ";
  
