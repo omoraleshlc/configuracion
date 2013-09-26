@@ -377,7 +377,7 @@ close();
 
 //**********************CIERRO CLIENTES AMBULATORIOS A FARMACIA*********************
 }else{
-    echo '<script>window.alert("FAVOR DE LLENAR LOS CAMPOS!");</script>';
+    echo '<script>window.alert("ALUMNO NO ENCONTRADO!");</script>';
 }
 
 }

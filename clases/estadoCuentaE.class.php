@@ -1113,7 +1113,7 @@ $myrow3ae = mysql_fetch_array($result3ae);
 $diferencia= number_format($_POST['totalAbono']-$_POST['totalCargo'],2);
 
 
-
+/*
 if($diferencia>0){
 $sSQL3c= "Select keyCAP,cantidadParticular,cantidadAseguradora,ivaParticular,ivaAseguradora From cargosCuentaPaciente WHERE 
 entidad='".$entidad."' and folioVenta = '".$_GET['folioVenta']."' 
@@ -1149,7 +1149,7 @@ echo mysql_error();
 }
 }
 //*******************************************
-
+*/
 
 
 
@@ -1593,33 +1593,35 @@ NOTA DE CREDITO
 <?php 
 //*******************************OPERACION GLOBAL*****************************
 //CARGOS
+//$subTotalDescuentos=sprintf("%01.2f", $operaciones); 
+
 
 if($myrow['naturaleza']=='C'  and $myrow['statusRegreso']!='si'){ 
-$cargo[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad'])+($myrow['iva']*$myrow['cantidad']);
+$cargo[0]+=sprintf("%01.2f", $myrow['precioVenta']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['iva']*$myrow['cantidad']);
 }
 
 //ABONOS
 if($myrow['naturaleza']=='A' and $myrow['gpoProducto']==''){ 
-$abono[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad'])+($myrow['iva']*$myrow['cantidad']);
+$abono[0]+=sprintf("%01.2f", $myrow['precioVenta']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['iva']*$myrow['cantidad']);
 }
 
 
 //DEVOLUCIONES
 if($myrow['naturaleza']=='A' and $myrow['statusDevolucion']=='si'){
-$devolucion[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad'])+($myrow['iva']*$myrow['cantidad']);
+$devolucion[0]+=sprintf("%01.2f", $myrow['precioVenta']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['iva']*$myrow['cantidad']);
 }
 
 
 //DEVOLUCIONES CARGOS
 if($myrow['naturaleza']=='C' and $myrow['statusDevolucion']=='si'){
-$devolucionCargos[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad'])+($myrow['iva']*$myrow['cantidad']);
+$devolucionCargos[0]+=sprintf("%01.2f", $myrow['precioVenta']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['iva']*$myrow['cantidad']);
 }
 
 
 
 //REGRESOS
 if($myrow['naturaleza']=='C' and $myrow['statusRegreso']=='si'){ 
-$regreso[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad'])+($myrow['iva']*$myrow['cantidad']);
+$regreso[0]+=sprintf("%01.2f", $myrow['precioVenta']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['iva']*$myrow['cantidad']);
 }
 //*******************************************************************************
 
@@ -1631,23 +1633,23 @@ $regreso[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad'])+($myrow['iva']*$
 
 //CARGOS PARTICULARES 
 if($myrow['naturaleza']=='C'  and $myrow['statusRegreso']!='si'){ 
-$cargoParticular[0]+=(float) ($myrow['cantidadParticular']*$myrow['cantidad'])+($myrow['ivaParticular']*$myrow['cantidad']);
+$cargoParticular[0]+=sprintf("%01.2f", $myrow['cantidadParticular']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['ivaParticular']*$myrow['cantidad']);
 }
 
 //ABONOS
 if($myrow['naturaleza']=='A' and $myrow['gpoProducto']==''){
-$abonoParticular[0]+=(float) ($myrow['cantidadParticular']*$myrow['cantidad'])+($myrow['ivaParticular']*$myrow['cantidad']);
+$abonoParticular[0]+=sprintf("%01.2f", $myrow['cantidadParticular']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['ivaParticular']*$myrow['cantidad']);
 }
 
 
 //DEVOLUCIONES
 if($myrow['naturaleza']=='A' and $myrow['statusDevolucion']=='si'){
-$devolucionParticular[0]+=(float) ($myrow['cantidadParticular']*$myrow['cantidad'])+($myrow['ivaParticular']*$myrow['cantidad']);
+$devolucionParticular[0]+=sprintf("%01.2f", $myrow['cantidadParticular']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['ivaParticular']*$myrow['cantidad']);
 }
 
 //REGRESO DE EFECTIVO
 if($myrow['naturaleza']=='C' and $myrow['statusRegreso']=='si'){ 
-$regresoParticular[0]+=(float) ($myrow['cantidadParticular']*$myrow['cantidad'])+($myrow['ivaParticular']*$myrow['cantidad']);
+$regresoParticular[0]+=sprintf("%01.2f", $myrow['cantidadParticular']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['ivaParticular']*$myrow['cantidad']);
 }
 //******************************************************************************************
 
@@ -1674,15 +1676,15 @@ $regresoParticular[0]+=(float) ($myrow['cantidadParticular']*$myrow['cantidad'])
  
 
 if($myrow['naturaleza']=='C' and $myrow['gpoProducto']!=''){//cargos al paciente
-   $cargosBeneficencia[0]+=(float) ($myrow['cantidadBeneficencia']*$myrow['cantidad'])+($myrow['ivaBeneficencia']*$myrow['cantidad']);
+   $cargosBeneficencia[0]+=sprintf("%01.2f", $myrow['cantidadBeneficencia']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['ivaBeneficencia']*$myrow['cantidad']);
 }
 
 if($myrow['naturaleza']=='A' and $myrow['gpoProducto']!=''){//devolucion de cargo beneficencia
-$devolucionBeneficencia[0]+=(float) ($myrow['cantidadBeneficencia']*$myrow['cantidad'])+($myrow['ivaBeneficencia']*$myrow['cantidad']);
+$devolucionBeneficencia[0]+=sprintf("%01.2f", $myrow['cantidadBeneficencia']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['ivaBeneficencia']*$myrow['cantidad']);
 }
 
 if($myrow['tipoTransaccion']=='DEVXB'){ 
-$dtBeneficencia[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad'])+($myrow['iva']*$myrow['cantidad']);
+$dtBeneficencia[0]+=sprintf("%01.2f", $myrow['precioVenta']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['iva']*$myrow['cantidad']);
 }
 
 
@@ -1691,28 +1693,28 @@ $dtBeneficencia[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad'])+($myrow['
 
 
 if($myrow['naturaleza']=='A' and $myrow['gpoProducto']==''){//abonos
-$abonosBeneficencia[0]+=(float) ($myrow['cantidadBeneficencia']*$myrow['cantidad']);
+$abonosBeneficencia[0]+=sprintf("%01.2f", $myrow['cantidadBeneficencia']*$myrow['cantidad']);
 }
 
 
 if($myrow['naturaleza']=='C'  and $myrow['statusRegreso']!='si'){
-$cargoAseguradora[0]+=(float) ($myrow['cantidadAseguradora']*$myrow['cantidad'])+($myrow['ivaAseguradora']*$myrow['cantidad']);
+$cargoAseguradora[0]+=sprintf("%01.2f", $myrow['cantidadAseguradora']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['ivaAseguradora']*$myrow['cantidad']);
 }
 
 //ABONOS
 if($myrow['naturaleza']=='A' and $myrow['gpoProducto']==''){
-$abonoAseguradora[0]+=(float) ($myrow['cantidadAseguradora']*$myrow['cantidad'])+($myrow['ivaAseguradora']*$myrow['cantidad']);
+$abonoAseguradora[0]+=sprintf("%01.2f", $myrow['cantidadAseguradora']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['ivaAseguradora']*$myrow['cantidad']);
 }
 
 
 //DEVOLUCIONES
 if($myrow['naturaleza']=='A' and $myrow['statusDevolucion']=='si'){ 
-$devolucionAseguradora[0]+=(float) ($myrow['cantidadAseguradora']*$myrow['cantidad'])+($myrow['ivaAseguradora']*$myrow['cantidad']);
+$devolucionAseguradora[0]+=sprintf("%01.2f", $myrow['cantidadAseguradora']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['ivaAseguradora']*$myrow['cantidad']);
 }
 
 //REGRESO DE TRASLADO
 if($myrow['naturaleza']=='C' and $myrow['statusRegreso']=='si'){
-$regresoAseguradora[0]+=(float) ($myrow['cantidadAseguradora']*$myrow['cantidad'])+($myrow['ivaAseguradora']*$myrow['cantidad']);
+$regresoAseguradora[0]+=sprintf("%01.2f", $myrow['cantidadAseguradora']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['ivaAseguradora']*$myrow['cantidad']);
 }
 
 
@@ -1720,9 +1722,9 @@ $regresoAseguradora[0]+=(float) ($myrow['cantidadAseguradora']*$myrow['cantidad'
 
 //IVA
 if($myrow['naturaleza']=='C'){
-$ivaCargos[0]+=(float) ($myrow['iva']*$myrow['cantidad']);
+$ivaCargos[0]+=sprintf("%01.2f", $myrow['iva']*$myrow['cantidad']);
 }elseif($myrow['naturaleza']=='A'){
-$ivaAbonos[0]+=(float) ($myrow['iva']*$myrow['cantidad']);
+$ivaAbonos[0]+=sprintf("%01.2f", $myrow['iva']*$myrow['cantidad']);
 }
 //******************************************************************************************
 ?>
@@ -1788,9 +1790,9 @@ $my7 = mysql_fetch_array($rs7);
 if($myrow['tipoTransaccion']==$my1['codigoTT']){ 
 $coaseguro1=$my1['codigoTT'];
 if($myrow['naturaleza']=='-'){ 
-$totalCargoCoaseguro1[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad']);
+$totalCargoCoaseguro1[0]+=sprintf("%01.2f", $myrow['precioVenta']*$myrow['cantidad']);
 }else{
-$totalAbonoCoaseguro1[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad']);
+$totalAbonoCoaseguro1[0]+=sprintf("%01.2f", $myrow['precioVenta']*$myrow['cantidad']);
 }
 }
 
@@ -1798,9 +1800,9 @@ $totalAbonoCoaseguro1[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad']);
 if($myrow['tipoTransaccion']==$my2['codigoTT']){
 $coaseguro2=$my2['codigoTT'];
 if($myrow['naturaleza']=='-'){
-$totalCargoCoaseguro2[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad']);
+$totalCargoCoaseguro2[0]+=sprintf("%01.2f", $myrow['precioVenta']*$myrow['cantidad']);
 }else{
-$totalAbonoCoaseguro2[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad']);
+$totalAbonoCoaseguro2[0]+=sprintf("%01.2f", $myrow['precioVenta']*$myrow['cantidad']);
 }
 } 
 
@@ -1808,18 +1810,18 @@ $totalAbonoCoaseguro2[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad']);
 if($myrow['tipoTransaccion']==$my3['codigoTT']){
 $deducible1=$my3['codigoTT'];
 if($myrow['naturaleza']=='-'){
-$totalCargoDeducible1[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad']);
+$totalCargoDeducible1[0]+=sprintf("%01.2f", $myrow['precioVenta']*$myrow['cantidad']);
 }else{
-$totalAbonoDeducible1[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad']);
+$totalAbonoDeducible1[0]+=sprintf("%01.2f", $myrow['precioVenta']*$myrow['cantidad']);
 }
 } 
 
 if($myrow['tipoTransaccion']==$my4['codigoTT']){
 $deducible2=$my4['codigoTT'];
 if($myrow['naturaleza']=='-'){
-$totalCargoDeducible2[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad']);
+$totalCargoDeducible2[0]+=sprintf("%01.2f", $myrow['precioVenta']*$myrow['cantidad']);
 }else{
-$totalAbonoDeducible2[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad']);
+$totalAbonoDeducible2[0]+=sprintf("%01.2f", $myrow['precioVenta']*$myrow['cantidad']);
 }
 }
 
@@ -1830,9 +1832,9 @@ $totalAbonoDeducible2[0]+=(float) ($myrow['precioVenta']*$myrow['cantidad']);
 if($myrow['tipoTransaccion']==$my5['codigoTT'] || $myrow['tipoTransaccion']==$my5a['codigoTT']){ 
 $descuentoParticular=$my5a['codigoTT'];
 if($myrow['naturaleza']=='-'){
-$descuentoParticularAplicado[0]+=(float) ($myrow['cantidadParticular']*$myrow['cantidad']);
+$descuentoParticularAplicado[0]+=sprintf("%01.2f", $myrow['cantidadParticular']*$myrow['cantidad']);
 }else{
-$descuentosParticulares[0]+=(float) ($myrow['cantidadParticular']*$myrow['cantidad']);
+$descuentosParticulares[0]+=sprintf("%01.2f", $myrow['cantidadParticular']*$myrow['cantidad']);
 }
 }
 
@@ -1840,9 +1842,9 @@ $descuentosParticulares[0]+=(float) ($myrow['cantidadParticular']*$myrow['cantid
 if($myrow['tipoTransaccion']==$my6['codigoTT'] || $myrow['tipoTransaccion']==$my6a['codigoTT']){
 $descuentoAseguradora=$my6a['codigoTT'];
 if($myrow['naturaleza']=='-'){
-$descuentoAseguradoraAplicado[0]+=(float) ($myrow['cantidadAseguradora']*$myrow['cantidad']);
+$descuentoAseguradoraAplicado[0]+=sprintf("%01.2f", $myrow['cantidadAseguradora']*$myrow['cantidad']);
 }else{
-$descuentosAseguradoras[0]+=(float) ($myrow['cantidadAseguradora']*$myrow['cantidad']);
+$descuentosAseguradoras[0]+=sprintf("%01.2f", $myrow['cantidadAseguradora']*$myrow['cantidad']);
 }
 }
 
