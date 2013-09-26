@@ -241,7 +241,7 @@ $myrow45 = mysql_fetch_array($result45);
 
 
 if($myrow7a['numMatricula']){
-$sSQL7c= "Select * from ALUMNOSINSCRITOS where ENTIDAD='".$entidad."'  and  MATRICULA='".$_POST['credencial']."'  and MODALIDAD='Presencial'   ";
+$sSQL7c= "Select * from alumnos where   matricula='".$_POST['credencial']."'    ";
 $result7c=mysql_db_query($basedatos,$sSQL7c);
 $myrow7c = mysql_fetch_array($result7c);
 
@@ -249,7 +249,7 @@ $sSQL7ab= "Select * from segurosLimites where entidad='".$entidad."'  and seguro
 $result7ab=mysql_db_query($basedatos,$sSQL7ab);
 $myrow7ab = mysql_fetch_array($result7ab);
 
-if($myrow7ab['seguro'] and $myrow7c['MATRICULA']){
+if($myrow7ab['seguro'] and $myrow7c['matricula']){
 
 $despliegaEC='si';
 $estudiante='si';

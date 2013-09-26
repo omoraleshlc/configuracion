@@ -11,7 +11,7 @@ $servidor='192.168.1.11';
 
 /*
 $usuario="omorales";
-$passwd='salermo';
+$passwd='wolf3333';
 $servidor='localhost';
 */
 
