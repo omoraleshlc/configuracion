@@ -4387,10 +4387,62 @@ $tipoPago='Cuentas por Cobrar';
       <?php if($mostrar==TRUE){ ?>
 	  
 	  
+                  
+                  
+<?php 
+###COMPROBACIONES OBLIGATORIAS 1Oct2013
+                  $sql5car= "
+                    SELECT *
+                    FROM
+                    convenios
+                    WHERE
+                    entidad='".$entidad."'
+                        and
+                    numCliente =  '".$myrow1d['clientePrincipal']."'
+                    AND
+                    (departamento='".$myrow1d['almacen']."' or departamento='*')
+                    AND
+                    tipoConvenio='descuentoConvenio'
+                    and
+                    ('".$fecha1."'>=fechaInicial and '".$fecha1."'<=fechaFinal)
+                    ";
+                    $result5car=mysql_db_query($basedatos,$sql5car);
+                    $myrow5car= mysql_fetch_array($result5car);
+                    
+                    if($myrow5car['costo']>0){
+                    $sSQL3a= "
+                    SELECT sum((cantidadAseguradora*cantidad)+(ivaAseguradora*cantidad)) as totales 
+                    From cargosCuentaPaciente 
+                    WHERE  entidad='".$entidad."' and folioVenta = '".$_GET['folioVenta']."' 
+                    and tipoTransaccion='".$my6a['codigoTT']."'";
+                    $result3a=mysql_db_query($basedatos,$sSQL3a);
+                    $myrow3a = mysql_fetch_array($result3a);    
+                    if($myrow3a['totales']>0){$descuentoHecho=$myrow3a['totales'];}
+                    
+                    //echo $totalAseguradora.'  '.$cantidadDescuento.'  '.$descuentoHecho;
+                    $descripcionTransaccion=$my6a['descripcion'];
+                    $descuentoAseguradora=$my6a['codigoTT'];
+                    $cantidadDescuento=($myrow5['costo']*0.01)*$totalAseguradora;
+                    $candadoA=($totalAseguradora-$cantidadDescuento)-$descuentoHecho;
+                    
+                    }
+
+
+
+
+?>                  
 	  
 	  <?php if($totalAseguradora>-1 and $totalAseguradora>0){ ?>
-      <a href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
-&amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;precioVenta=<?php echo $totalAseguradora;?>&amp;modoPago=<?php if($_GET['devolucion']=='si'){echo 'devolucionAseguradora';}else{ echo 'cxc';} ?>&amp;transaccion=<?php echo $my['codigoTT'];?>&amp;tipoTransaccion=aseguradora&amp;tipoPago=<?php echo $tipoPago;?>&amp;devolucion=<?php echo $_GET['devolucion'];?>&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>','ventana7','800','380','yes');"> <?php echo '$'.number_format($totalAseguradora,2);?></a>
+    <?php 
+    if($candadoA<1){?>                  
+<a href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
+&amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;precioVenta=<?php echo $totalAseguradora;?>&amp;modoPago=<?php if($_GET['devolucion']=='si'){echo 'devolucionAseguradora';}else{ echo 'cxc';} ?>&amp;transaccion=<?php echo $my['codigoTT'];?>&amp;tipoTransaccion=aseguradora&amp;tipoPago=<?php echo $tipoPago;?>&amp;devolucion=<?php echo $_GET['devolucion'];?>&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>','ventana7','800','380','yes');"> 
+<?php    echo '$'.number_format($totalAseguradora,2); ?>
+</a>
+    <?php }else{
+    echo '$'.number_format($totalAseguradora,2);    
+    } ?>                 
+                  
       <?php } else { echo '<img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />';}?>
 
 
