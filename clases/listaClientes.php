@@ -4,7 +4,7 @@ public function listaClientes($tipoconvenio,$entidad,$ventana,$ventana1,$TITULO,
 
 
 
-if($_GET['borrar']=='si' AND $_GET['numCliente']){
+if(!$_POST['nuevo'] and ($_GET['borrar']=='si' AND $_GET['numCliente'])){
 $borrame = "DELETE FROM convenios WHERE entidad='".$entidad."' AND numCliente ='".$_GET['numCliente']."' and tipoConvenio='".$_GET['tipoConvenio']."'";
 mysql_db_query($basedatos,$borrame);
 echo mysql_error();
@@ -122,8 +122,8 @@ $estilo->styles();
  
      <tr >
        <th width="17" align="center" >#</th>
-       <th width="198" >Cliente Principal</th>
-       <th width="176" >Sub-Cliente</th>
+       <th width="198" >Cliente</th>
+       
        <th width="54" align="center" >Tipo Px</th>
        <th width="103" align="center" >Editar/Ver</th>
        <th width="49" align="center" >Agregar</th>
@@ -221,16 +221,7 @@ $myrow1 = mysql_fetch_array($result1);
 
 
 
-          <td  >
-
-          <?php
-          if($myrow1['nomCliente']!=NULL){
-          echo $myrow1['nomCliente'];
-          }else{
-              echo '<span class="error">No tiene cliente principal definido!</span>';
-          }
-          ?><br />
-      <span > Codigo Cliente    </span>   <?php echo $N?></td>
+          
 
 
           <td  ><?php 
@@ -267,7 +258,7 @@ $myrow1 = mysql_fetch_array($result1);
 
 
           <td  ><p align="center">
-<a href="<?php echo $url;?>?numCliente=<?php echo $N; ?>&tipoConvenio=<?php echo $tipoconvenio;?>&borrar=si">
+<a href="<?php echo $url;?>?numCliente=<?php echo $N; ?>&tipoConvenio=<?php echo $tipoconvenio;?>&borrar=si&main=<?php echo $_GET['main'];?>&warehouse=<?php echo $_GET['warehouse'];?>&datawarehouse=<?php echo $_GET['datawarehouse'];?>">
 
 <img src="/sima/imagenes/borrar.png" alt="INACTIVO" width="20" height="20" border="0"
      onclick="if(confirm('Esta seguro que deseas eliminar el convenio <?php echo $tipoconvenio;?> del cliente <?php   echo $myrow1['nomCliente'];?> ?') == false){return false;}" />
@@ -283,7 +274,7 @@ $myrow1 = mysql_fetch_array($result1);
 
 <p>&nbsp;</p>
    <p>
-     <input name="nuevo" type="button"  id="nuevo" value="Nuevo Cliente"
+     <input name="nuevo" type="submit"  id="nuevo" value="Nuevo Cliente"
 	  onclick="ventanaSecundaria2('<?php echo $ventana;?>')" />
    </p>
 </form>

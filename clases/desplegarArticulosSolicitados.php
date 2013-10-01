@@ -593,8 +593,46 @@ echo mysql_error();
     
     
     
+###DESCUENTOS SOBRE CONVENIOS  APLICA A INTERNOS Y EXTERNOS, ES GLOBAL  
+if($myrow3['tipoPaciente']=='externo'){
+if($_POST['descuentoSobreConvenio']>0){
+$dsc='si';   
     
-    
+
+
+$descripcion='La cuenta tiene un descuento sobre convenio';
+$agrega = "INSERT INTO logs (
+descripcion,almacenSolicitante,almacenDestino,usuario,hora,fecha,entidad,folioVenta,cuartoIngreso,cuartoTransferido)
+values
+('".$descripcion."','".$_GET['almacen']."','".$_POST['almacenDestino']."',
+'".$usuario."','".$hora1."','".$fecha1."','".$entidad."','',
+'','')";
+mysql_db_query($basedatos,$agrega);
+echo mysql_error();    
+ 
+$s= "Select * From catTTCaja WHERE  aplicarDescuentoAseguradoras='si'  ";
+$rs=mysql_db_query($basedatos,$s);
+$my = mysql_fetch_array($rs);
+
+$agrega = "INSERT INTO cargosCuentaPaciente (
+numeroE,nCuenta,status,usuario,fecha1,dia,cantidad,tipoTransaccion,codProcedimiento,hora1,
+naturaleza,ejercicio,statusDeposito,numeroConfirmacion,almacen,usuarioTraslado,precioVenta,seguro,
+statusTraslado,tipoCliente,tipoPaciente,cantidadParticular,cantidadAseguradora,numCorte,entidad,
+tipoCobro,statusAuditoria,tipoPago,statusCargo,porcentajeVariable,cargosHospitalarios,almacenDestino,
+descripcionArticulo,statusDescuento,keyClientesInternos,folioVenta,clientePrincipal) 
+values 
+('".$myrow3115s['numeroE']."','".$myrow3115s['nCuenta']."','transaccion',
+'".$usuario."','".$fecha1."','".$dia."','1','".$my['codigoTT']."','".$hora1."',
+'".$hora1."','".$my['naturaleza']."','".$ID_EJERCICIOM."','','".$numeroConfirmacion."','".$ALMACEN."','".$usuario."',
+'".$_POST['descuentoSobreConvenio']."','".$myrow3115s['seguro']."','standby','descuentoConvenio','".$myrow3115s['tipoPaciente']."',
+'".$cantidadParticular."','".$_POST['descuentoSobreConvenio']."', '".$numCorte."','".$entidad."','".$tp."','standby'
+,'".$_GET['tipoPago']."','cargado','".$_POST['porcentaje']."','".$_POST['cargosHospitalarios']."','".$ALMACEN."' , '".$my['descripcion']."' ,'si',
+'".$_GET['keyClientesInternos']."','".$FV."','".$myrow3115s['clientePrincipal']."'  )";
+mysql_db_query($basedatos,$agrega);
+echo mysql_error();
+}
+}//entra si es externo solamente
+###CERRAR VALIDACION DE DESCUENTOS SOBRE CONVENIOS
 
 
 
@@ -602,11 +640,10 @@ echo mysql_error();
 
 
 
+//********VERIFICAR SI HAY DESCUENTOS NORMALES *******
 
-//********VERIFICAR SI HAY DESCUENTO *******
 
-
-if($myrow3115s['descuento']=='si'){ 
+if($myrow3115s['descuento']=='si' and $dsc==null){ 
 
         $descripcion='El paciente tiene un descuento: '.$myrow3115s['paciente'].',codigo: '.$_GET['keyClientesInternos'];
         $agrega = "INSERT INTO logs (
@@ -627,7 +664,7 @@ $descuentoTotal=$_POST['totalCargos']*($myrow3a['porcentaje']*0.01);
 if($myrow3115s['seguro'] ){
 
 $cantidadAseguradora=$descuentoTotal;
-$s= "Select * From catTTCaja WHERE  and aplicarDescuentoAseguradoras='si'  ";
+$s= "Select * From catTTCaja WHERE  aplicarDescuentoAseguradoras='si'  ";
 $rs=mysql_db_query($basedatos,$s);
 $my = mysql_fetch_array($rs);
 
@@ -689,19 +726,23 @@ ventanaSecundaria2('/sima/INGRESOS HLC/caja/estadoCuentaE.php?numeroE=<?php echo
 window.close();
 </script>
 <?php }else{ ?>
+
 <script>
 window.alert("SE GENERO EL FOLIO DE VENTA <?php echo $FV;?>"); 
 window.close();
 </script>
+
 <?php } ?>
 
 
 <?php
 }else{
+
 echo '<script>';
 echo 'window.alert("ARTICULOS CARGADOS CORRECTAMENTE!");';    
 echo 'window.close();';
-echo '</script>';   
+echo '</script>';  
+    
 }
 
 
@@ -923,9 +964,15 @@ $result31=mysql_db_query($basedatos,$sSQL31);
 $myrow31 = mysql_fetch_array($result31);
 $lSeguro=$myrow31['limiteSeguro'];
 $paciente=$myrow31['paciente'];
+$clienteP=  $myrow31['clientePrincipal'];
 ?>
   </p>
 
+    
+<?php
+//echo 'descuento';
+?>
+    
   <table width="700" class="table table-striped">
     <tr>
       <th colspan="700" >
@@ -1336,6 +1383,9 @@ echo "N/A";
 ?>
       
       </td>
+        
+        
+        
       <td  align="right"><?php 
 		$totalP[0]+=($myrow['cantidadParticular']*$myrow['cantidad'])+($myrow['ivaParticular']*$myrow['cantidad']);
 		echo "$".number_format(($myrow['cantidadParticular']*$myrow['cantidad'])+($myrow['ivaParticular']*$myrow['cantidad']),2); ?></td>
@@ -1446,22 +1496,80 @@ print $array[$is];
       <br />
     </p>
               
-                <table width="172" class="table-forma">
+                <table width="400" class="table-forma">
+                  
+                    
                   <tr>
                     <th width="85" height="23"  >Particular</th>
                     <td width="87"  align="right"><span  ><?php echo "$".number_format($totalP[0],2);?></span></td>
                   </tr>
                   
                                <tr>
-                    <th  >Beneficencia</th>
-                    <td  align="right"><span ><?php echo "$".number_format($totalB[0],2);?></span></td>
+                  <th  >Beneficencia</th>
+                  <td  align="right"><span ><?php echo "$".number_format($totalB[0],2);?></span></td>
                   </tr>
                   
                   
                   <tr>
-                    <th  >Aseguradora</th>
-                    <td  align="right"><span ><?php echo "$".number_format($totalA[0],2);?></span></td>
+                  <th  >Aseguradora</th>
+                  <td  align="right"><span ><?php echo "$".number_format($totalA[0],2);?></span></td>
+               
                   </tr>
+                  
+                  
+                  <?php //descuento sobre convenio 30sep2013
+                    ###DESCUENTO SOBRE CONVENIO
+                    $sql5= "
+                    SELECT *
+                    FROM
+                    convenios
+                    WHERE
+                    entidad='".$entidad."'
+                        and
+                    numCliente =  '".$clienteP."'
+                    AND
+                    (departamento ='".$_GET['almacen']."' or departamento='*')
+                    AND
+                    tipoConvenio='descuentoConvenio'
+                    and
+                    ('".$fecha1."'>=fechaInicial and '".$fecha1."'<=fechaFinal)
+                    ";
+                    $result5=mysql_db_query($basedatos,$sql5);
+                    $myrow5= mysql_fetch_array($result5);
+                    
+                    if($myrow5['costo']>0){
+                 
+                    $sSQL3a= "
+                        Select sum((cantidadAseguradora*cantidad)+(ivaAseguradora*cantidad)) as totales 
+                        From cargosCuentaPaciente 
+                        WHERE entidad='".$entidad."' 
+                            and 
+                            keyClientesInternos = '".$_GET['keyClientesInternos']."' ";
+                    $result3a=mysql_db_query($basedatos,$sSQL3a);
+                    $myrow3a = mysql_fetch_array($result3a);
+                    
+                    //echo $myrow5['costo'].'  '.$myrow3a['totales'];
+                    
+
+
+
+                    $cantidadDescuento=($myrow5['costo']*0.01)*$myrow3a['totales'];
+                    $cantidadTotalDescuento=$myrow3a['totales']-$cantidadDescuento;
+                  ?>
+                    
+                  <?php if($myrow5['costo']>0){?>
+                  <tr>  
+                  <th  >Descuento Aseguradora</th>
+                  <td  align="right"><?php echo '-'.$myrow5['costo'].'%'.'    ';?><span ><?php echo "$".number_format($cantidadDescuento,2);?></span></td>
+                  </tr>
+                    
+                   <tr>  
+                  <th  >Total Aseguradora</th>
+                  <td  align="right"><span ><?php echo "$".number_format($cantidadTotalDescuento,2);?></span></td>
+                  </tr> 
+                  <input name="descuentoSobreConvenio" type="hidden" id="totalCargos" value="<?php  echo $cantidadDescuento; ?>" />  
+                  <?php }}?>  
+                    
                   <tr>
                     <td >&nbsp;</td>
                     <td >&nbsp;</td>
@@ -1568,7 +1676,7 @@ if($lSeguro>0 AND $lSeguro<$comprobacion ){?>
                   </tr>
     </table>
          <br></br>
-     <blink>YA SUPERO SU LIMITE DE CREDITO, FAVOR DE VERIFICAR...!! </blink>
+     <blink><div align="right" class="error"><h1 >VERIFIQUE EL LIMITE DE CREDITO...!! </h1></div></blink>
  	
 
       <?php }elseif($myrow31['farmacia']=='si' or $myrow1e['llenadoEspecial']!='si'){
