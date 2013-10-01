@@ -594,6 +594,7 @@ echo mysql_error();
     
     
 ###DESCUENTOS SOBRE CONVENIOS  APLICA A INTERNOS Y EXTERNOS, ES GLOBAL  
+/*
 if($myrow3['tipoPaciente']=='externo'){
 if($_POST['descuentoSobreConvenio']>0){
 $dsc='si';   
@@ -631,7 +632,7 @@ values
 mysql_db_query($basedatos,$agrega);
 echo mysql_error();
 }
-}//entra si es externo solamente
+}*///entra si es externo solamente
 ###CERRAR VALIDACION DE DESCUENTOS SOBRE CONVENIOS
 
 
@@ -641,7 +642,6 @@ echo mysql_error();
 
 
 //********VERIFICAR SI HAY DESCUENTOS NORMALES *******
-
 
 if($myrow3115s['descuento']=='si' and $dsc==null){ 
 
@@ -1517,7 +1517,7 @@ print $array[$is];
                   </tr>
                   
                   
-                  <?php //descuento sobre convenio 30sep2013
+                  <?php /*/*descuento sobre convenio 30sep2013
                     ###DESCUENTO SOBRE CONVENIO
                     $sql5= "
                     SELECT *
@@ -1568,7 +1568,7 @@ print $array[$is];
                   <td  align="right"><span ><?php echo "$".number_format($cantidadTotalDescuento,2);?></span></td>
                   </tr> 
                   <input name="descuentoSobreConvenio" type="hidden" id="totalCargos" value="<?php  echo $cantidadDescuento; ?>" />  
-                  <?php }}?>  
+                  <?php }} */?>  
                     
                   <tr>
                     <td >&nbsp;</td>

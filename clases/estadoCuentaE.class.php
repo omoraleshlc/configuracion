@@ -4587,6 +4587,9 @@ $tP=$totalParticular*-1;
       <?php
       ##ACTUALIZADO EN 1oct2013
       ###DESCUENTO SOBRE CONVENIO
+      ###FUNCIONA CON LOS EXTERNO
+                    //echo $myrow1d['tipoPaciente'];
+                    
                     $sql5= "
                     SELECT *
                     FROM
@@ -4594,9 +4597,9 @@ $tP=$totalParticular*-1;
                     WHERE
                     entidad='".$entidad."'
                         and
-                    numCliente =  '".$clienteP."'
+                    numCliente =  '".$myrow1d['clientePrincipal']."'
                     AND
-                    (departamento ='".$_GET['almacen']."' or departamento='*')
+                    (departamento='".$myrow1d['almacen']."' or departamento='*')
                     AND
                     tipoConvenio='descuentoConvenio'
                     and
@@ -4606,24 +4609,30 @@ $tP=$totalParticular*-1;
                     $myrow5= mysql_fetch_array($result5);
                     
                     if($myrow5['costo']>0){
-                 
+                    //$tA total de aseguradora
+                    //echo $myrow5['costo'].'  '.$tA;  
+                    
+                    $s6a= "Select * From catTTCaja WHERE  descuentoAseguradoras='si'  ";
+                    $rs6a=mysql_db_query($basedatos,$s6a);
+                    $my6a = mysql_fetch_array($rs6a); 
+                    
+                    
                     $sSQL3a= "
-                        Select sum((cantidadAseguradora*cantidad)+(ivaAseguradora*cantidad)) as totales 
-                        From cargosCuentaPaciente 
-                        WHERE entidad='".$entidad."' 
-                            and 
-                            keyClientesInternos = '".$_GET['keyClientesInternos']."' ";
+                    SELECT sum((cantidadAseguradora*cantidad)+(ivaAseguradora*cantidad)) as totales 
+                    From cargosCuentaPaciente 
+                    WHERE  entidad='".$entidad."' and folioVenta = '".$_GET['folioVenta']."' 
+                    and tipoTransaccion='".$my6a['codigoTT']."'";
                     $result3a=mysql_db_query($basedatos,$sSQL3a);
-                    $myrow3a = mysql_fetch_array($result3a);
+                    $myrow3a = mysql_fetch_array($result3a);    
+                    if($myrow3a['totales']>0){$descuentoHecho=$myrow3a['totales'];}
                     
-                    //echo $myrow5['costo'].'  '.$myrow3a['totales'];
-                    
-
-
-
-                    $cantidadDescuento=($myrow5['costo']*0.01)*$myrow3a['totales'];
-                    $cantidadTotalDescuento=$myrow3a['totales']-$cantidadDescuento;
-      ###
+                    //echo $totalAseguradora.'  '.$cantidadDescuento.'  '.$descuentoHecho;
+                    $descripcionTransaccion=$my6a['descripcion'];
+                    $descuentoAseguradora=$my6a['codigoTT'];
+                    $cantidadDescuento=($myrow5['costo']*0.01)*$totalAseguradora;
+                    $descuentoA=($totalAseguradora-$cantidadDescuento)-$descuentoHecho;
+                    }
+      ##############
       ?>
                 
                 
