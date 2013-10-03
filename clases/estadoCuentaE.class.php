@@ -2512,20 +2512,28 @@ $transB=$my7['codigoTT'];
 <?php 
   //OPERACIONES GLOBALES
 
+/*
+echo '('.$cargoParticular[0].' - '.$abonoParticular[0].'  ) -  ('.$devolucionParticular[0].' - '.$regresoParticular[0].')';
+echo '<br>';
+echo 'Cargos: '.($cargoParticular[0]-$devolucionParticular[0]);
+echo '<br>';
+echo 'Abonos: '.($abonoParticular[0]);
+*/
 
   $totalCargo=sprintf("%01.2f", $cargo[0])-sprintf("%01.2f", $devolucion[0]);
   $totalAbono=sprintf("%01.2f", $abono[0])-sprintf("%01.2f", $regreso[0])+sprintf("%01.2f", $descuentos[0]);
   
-  $totalParticular=sprintf("%01.2f", $cargoParticular[0]-$abonoParticular[0])-($devolucionParticular[0]-$regresoParticular[0]);
-   $totalBeneficencia=sprintf("%01.2f", $cargosBeneficencia[0]-($abonosBeneficencia[0]-$dtBeneficencia[0]))-($devolucionBeneficencia[0]-$regresoBeneficencia[0]);
-  $totalAseguradora=sprintf("%01.2f", $cargoAseguradora[0]-$abonoAseguradora[0])-($devolucionAseguradora[0]-$regresoAseguradora[0]);
+  $totalParticular=sprintf("%01.2f", $cargoParticular[0]-$abonoParticular[0])-sprintf($devolucionParticular[0]-$regresoParticular[0]);
+   $totalBeneficencia=sprintf("%01.2f", $cargosBeneficencia[0]-($abonosBeneficencia[0]-$dtBeneficencia[0]))-sprintf($devolucionBeneficencia[0]-$regresoBeneficencia[0]);
+  $totalAseguradora=sprintf("%01.2f", $cargoAseguradora[0]-$abonoAseguradora[0])-sprintf($devolucionAseguradora[0]-$regresoAseguradora[0]);
 
 //echo $cargosBeneficencia[0].'-1- '.$abonosBeneficencia[0].'-2- '.$devolucionBeneficencia[0].' -3- '.$regresoBeneficencia[0];
   //REDONDEO GLOBALES****/
-  $TOTAL=sprintf("%01.2f", $totalCargo-$totalAbono);
-  if($TOTAL>-1 and $TOTAL<1){
-  $TOTAL='0.00';
-  }
+
+  $TOTAL=sprintf("%01.2f", $totalCargo)-sprintf("%01.2f",$totalAbono);
+  //if($TOTAL>-1 and $TOTAL<1){
+  //$TOTAL='0.00';
+  //}
   //**************************
   
   //******TOTAL PARTICULAR
@@ -3332,7 +3340,9 @@ $tipoPago='Efectivo';
       <?php if($mostrar==TRUE){ ?>
 
 
-<?php if($totalParticular>0 and $totalParticular>-1){ ?>
+<?php
+
+if($totalParticular>0 and $totalParticular>-1){ ?>
 <a  href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
 &amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;transaccion=particular&amp;precioVenta=<?php echo $totalParticular;?>&amp;modoPago=<?php if($_GET['devolucion']=='si'){echo 'devolucionParticular';}else{ echo 'efectivo';} ?>&amp;tipoTransaccion=particular&amp;tipoPago=<?php echo $tipoPago;?>&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>&statusCortesia=<?php echo $myrow3['statusCortesia'];?>&tipoDevolucion=<?php echo $tipoDevolucion;?>&beneficencia=<?php
 if($myrow3['activaBeneficencia']=='si'){ echo 'si';}?>&statusBeneficencia=<?php if($myrow3['activaBeneficencia']=='si'){ echo 'si';}?>&activaBeneficencia=<?php if($myrow3['activaBeneficencia']=='si'){ echo 'si';}?>&caso=<?php echo $caso;?>','ventana7','680','380','yes');">
@@ -3350,6 +3360,19 @@ echo '<img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />';}?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
     <td  ><div align="center"><span >
 
 
@@ -3559,7 +3582,6 @@ $tipoPago='Cuentas por Cobrar';
 
 
 
-
   
 <td  >
 <div align="center"><span >
@@ -3594,7 +3616,7 @@ $tA=$totalAseguradora*-1;
 	
 	
 	
-	
+
 	
 	
 	
@@ -3646,10 +3668,7 @@ $tP=$totalParticular*-1;
     </span></div></td>
     
     
-    
-    
-    
-    
+
     
     <td  ><div align="center"><span >
       <?php if($totalCoaseguro2>1){ ?>
@@ -3664,7 +3683,7 @@ $tP=$totalParticular*-1;
     
     
     
-    
+
     
     
     
@@ -3679,8 +3698,7 @@ $tP=$totalParticular*-1;
       <?php } ?>
     </span></div></td>
     
-    
-    
+
     
     
     
@@ -3699,8 +3717,7 @@ $tP=$totalParticular*-1;
     
     
     
-    
-    
+
     <td  >
         <div align="center">
             <span >
@@ -3718,6 +3735,7 @@ $tP=$totalParticular*-1;
     
     
     
+
     
     
     
@@ -3767,7 +3785,8 @@ $tpb='devolucionBeneficencia';
 </table>
 <p>&nbsp;</p>
 
- 
+
+
  
  <?php
  //CIERRA MOSTRAR EFECTUAR TRANSACCIONES
@@ -3980,7 +3999,19 @@ echo  '$'.number_format($myrowasegc['totalAseguradora']-$myrowasega['totalAsegur
     <th width="84"  ><div align="center">Beneficencia</div></th>
   </tr>
   <tr  >
-    <td height="48"  ><div align="center"><span >
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+<td height="48"  ><div align="center"><span >
 <?php  
 
 
@@ -4117,7 +4148,7 @@ $mPdes = mysql_fetch_array($rPdes);
   
   
   
-  
+
 
   
 
@@ -4187,7 +4218,7 @@ echo '<img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />';}?>
 
 
       <?php } else { echo '$'.number_format($totalParticular,2);}?>
-      <?php } else{?>
+      <?php } else{$u1=1;?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
@@ -4212,7 +4243,7 @@ echo '<img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />';}?>
       
       
       
-      <td  ><div align="center"><span >
+<td  ><div align="center"><span >
 
 
 
@@ -4423,8 +4454,8 @@ $tipoPago='Cuentas por Cobrar';
                     $descripcionTransaccion=$my6a['descripcion'];
                     $descuentoAseguradora=$my6a['codigoTT'];
                     $cantidadDescuento=($myrow5['costo']*0.01)*$totalAseguradora;
-                    $candadoA=($totalAseguradora-$cantidadDescuento)-$descuentoHecho;
-                    
+                    //$candadoA=($totalAseguradora-$cantidadDescuento)-$descuentoHecho;
+                    $candadoA=$descuentoAseguradora-$descuentoHecho;
                     }
 
 
@@ -4453,7 +4484,7 @@ $tipoPago='Cuentas por Cobrar';
       <?php } else{?>
       <?php echo '$'.number_format($totalAseguradora,2);?>
       <?php } ?>
-      <?php } else{?>
+      <?php } else{ $u2=1;?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
@@ -4489,7 +4520,7 @@ $tA=$totalAseguradora*-1;
       </blink></a>
       <div align="center">
         <?php } else { echo '$'.number_format($tA,2);}?>
-        <?php } else{?>
+        <?php } else{$u3=1;?>
         <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
         <?php } ?>
       </div>
@@ -4518,7 +4549,7 @@ $tA=$totalAseguradora*-1;
 	
 	
     <td  ><div align="center"><span >
-      <?php
+      <?php 
  if($totalParticular<-1){  
 $tP=$totalParticular*-1;
 ?>
@@ -4537,7 +4568,7 @@ $tP=$totalParticular*-1;
             
       <div align="center">
         <?php } else { echo '$'.number_format($tP,2);}?>
-        <?php } else{?>
+        <?php } else{$u4=1;?>
         <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
         <?php } ?>
       </div>
@@ -4554,7 +4585,7 @@ $tP=$totalParticular*-1;
       <a href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
 &amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;transaccion=<?php echo $coaseguro1;?>&amp;precioVenta=<?php echo $totalCoaseguro1;?>&amp;modoPago=efectivo&amp;tipoTransaccion=coaseguro&amp;numCoaseguro=PCoaS1&amp;tipoPago=Efectivo&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>','ventana7','480','380','yes');"> <?php echo '$'.number_format($totalCoaseguro1,2);?></a>
       <?php } else { echo '$'.number_format($totalCoaseguro1,2);}?>
-      <?php } else{?>
+      <?php } else{$u5=1;?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
@@ -4571,7 +4602,7 @@ $tP=$totalParticular*-1;
       <a href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
 &amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;transaccion=<?php echo $coaseguro2;?>&amp;precioVenta=<?php echo $totalCoaseguro2;?>&amp;modoPago=efectivo&amp;tipoTransaccion=coaseguro&amp;numCoaseguro=PCoaS2&amp;tipoPago=Efectivo&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>','ventana7','480','380','yes');"> <?php echo '$'.number_format($totalCoaseguro2,2);?></a>
       <?php } else { echo '$'.number_format($totalCoaseguro2,2);}?>
-      <?php } else{?>
+      <?php } else{$u6=1;?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
@@ -4588,7 +4619,7 @@ $tP=$totalParticular*-1;
       <a href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
 &amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;transaccion=<?php echo $deducible1;?>&amp;precioVenta=<?php echo $totalDeducible1;?>&amp;modoPago=efectivo&amp;tipoTransaccion=coaseguro&amp;numCoaseguro=PDeduSeg1&amp;tipoPago=Efectivo&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>','ventana7','480','380','yes');"> <?php echo '$'.number_format($totalDeducible1,2);?></a>
       <?php } else { echo '$'.number_format($totalDeducible1,2);}?>
-      <?php } else{?>
+      <?php } else{$u7=1;?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
@@ -4604,7 +4635,7 @@ $tP=$totalParticular*-1;
       <a href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
 &amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;transaccion=<?php echo $deducible2;?>&amp;precioVenta=<?php echo $totalDeducible2;?>&amp;modoPago=efectivo&amp;tipoTransaccion=coaseguro&amp;numCoaseguro=PDeduSeg2&amp;tipoPago=Efectivo&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>','ventana7','480','380','yes');"> <?php echo '$'.number_format($totalDeducible2,2);?></a>
       <?php } else { echo '$'.number_format($totalDeducible2,2);}?>
-      <?php } else{?>
+      <?php } else{$u8=1;?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
@@ -4625,7 +4656,7 @@ $tP=$totalParticular*-1;
     <?php echo '<span class="precio1"><blink>$'.number_format($descuentoP,2).'</blink></span>';?>
       </a>
       <?php } else { echo '$'.number_format($descuentoP,2);}?>
-      <?php } else{?>
+      <?php } else{$u9=1;?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
@@ -4676,13 +4707,16 @@ $tP=$totalParticular*-1;
                     and tipoTransaccion='".$my6a['codigoTT']."'";
                     $result3a=mysql_db_query($basedatos,$sSQL3a);
                     $myrow3a = mysql_fetch_array($result3a);    
-                    if($myrow3a['totales']>0){$descuentoHecho=$myrow3a['totales'];}
+                    if($myrow3a['totales']>0){$descuentoHecho=$myrow3a['totales'];}                    
                     
-                    //echo $totalAseguradora.'  '.$cantidadDescuento.'  '.$descuentoHecho;
                     $descripcionTransaccion=$my6a['descripcion'];
                     $descuentoAseguradora=$my6a['codigoTT'];
+                    
+                    
                     $cantidadDescuento=($myrow5['costo']*0.01)*$totalAseguradora;
-                    $descuentoA=($totalAseguradora-$cantidadDescuento)-$descuentoHecho;
+                    //$descuentoA=($totalAseguradora-$cantidadDescuento)-$descuentoHecho;
+                    $descuentoA=$cantidadDescuento-$descuentoHecho;
+                    
                     }
       ##############
       ?>
@@ -4696,7 +4730,7 @@ $tP=$totalParticular*-1;
     <?php echo '<span class="precio1"><blink>$'.number_format($descuentoA,2).'</blink></span>';?>
       </a>
       <?php } else { echo '$'.number_format($descuentoA,2);}?>
-      <?php } else{?>
+      <?php } else{$u10=1;?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
@@ -4705,7 +4739,26 @@ $tP=$totalParticular*-1;
 
 
     
-    
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
     
     
 <?php 
@@ -4725,7 +4778,7 @@ $tpb='devolucionBeneficencia';
       <a href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
 &amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;transaccion=<?php echo $transB;?>&amp;precioVenta=<?php echo $ben;?>&amp;modoPago=<?php echo $mp;?>&amp;tipoPago=<?php echo $tpb;?>&descripcionTransaccion=beneficencia&status=<?php echo $myrow3['status'];?>&beneficencia=si&statusBeneficencia=si','ventana7','480','380','yes');"> <?php echo '$'.number_format($ben,2);?></a>
       <?php } else { echo '$'.number_format($ben,2);}?>
-      <?php } else{?>
+      <?php } else{$u11=1;?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
@@ -4773,11 +4826,44 @@ $tpb='devolucionBeneficencia';
 	
 <div align="center">
 <?php 
+//11 deben ser
+$totalElementos= $u1+$u2+$u3+$u4+$u5+$u6+$u7+$u8+$u9+$u10+$u11;
+/*
+echo $totalParticular;
+echo '<br>';
+echo $totalAseguradora;
+echo '<br>';
+echo $tA+$totalAseguradora;
+echo '<br>';
+echo $tP;
+echo '<br>';
+echo $totalCoaseguro1;   
+echo '<br>';
+echo $totalCoaseguro2;
+echo '<br>';
+echo $totalDeducible1;  
+echo '<br>';
+echo $totalDeducible2;
+echo '<br>';
+echo $descuentoP;
+echo '<br>';
+echo $descuentoA;
+echo '<br>';
+echo $ben;
+echo '<br>';
+*/
+
+
+
+
+
+
+
 //*********************************
-$TOTAL=(float) ($TOTAL);
+$TOTAL=sprintf("%01.2f", $TOTAL);
 if($tipoPACIENTE=='externo'){
-$diferencia=(float) ($totalParticular-$totalAseguradora);
-if($ben<1  and (!$diferencia and ($totalParticular<1 or $totalAseguradora<1))){ 
+$diferencia=sprintf("%01.2f", $totalParticular)-sprintf("%01.2f", $totalAseguradora);
+if($totalElementos==11){ 
 ?>
 
   <input type="hidden" name="keyT" id="keyT" value="<?php echo $myrow1['keyT'];?>" />
@@ -4787,7 +4873,8 @@ if($ben<1  and (!$diferencia and ($totalParticular<1 or $totalAseguradora<1))){
       <?php }else{ ?>
         
       <?php
-if(($TOTAL>-1 && $TOTAL<1) && ($descuentoP<1 and $descuentoA<1)){   ?>
+      
+if($totalElementos==11){   ?>
   <input name="cerrar" type="submit" class="normal" id="cerrar" value="Cerrar Cuenta" onClick="if(confirm('&iquest;Est&aacute;s seguro que deseas cerrar la cuenta?') == false){return false;}" />
       <?php } ?>
         
