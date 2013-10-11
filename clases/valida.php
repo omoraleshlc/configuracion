@@ -2492,6 +2492,76 @@ legend + .control-group {
 
 
 </style>
+
+
+<?php 
+} 
+}
+?>
+
+
+
+
+<?php 
+class muestraEstilosV2{
+public function styles(){ ?>
+<link href="../bt/css/bootstrap.css" rel="stylesheet">
+    <link href="../bt/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../bt/css/prettify.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../imagenes/LOGOHLC.png">   
+          <!-- Le styles -->
+
+
+  
+<!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="../bt/assets/js/jquery.js"></script>
+    <script src="../bt/assets/js/bootstrap-transition.js"></script>
+    <script src="../bt/assets/js/bootstrap-alert.js"></script>
+    <script src="../bt/assets/js/bootstrap-modal.js"></script>
+    <script src="../bt/assets/js/bootstrap-dropdown.js"></script>
+    <script src="../bt/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="../bt/assets/js/bootstrap-tab.js"></script>
+    <script src="../bt/assets/js/bootstrap-tooltip.js"></script>
+    <script src="../bt/bt/assets/js/bootstrap-popover.js"></script>
+    <script src="../bt/assets/js/bootstrap-button.js"></script>
+    <script src="../bt/assets/js/bootstrap-collapse.js"></script>
+    <script src="../bt/assets/js/bootstrap-carousel.js"></script>
+    <script src="../bt/assets/js/bootstrap-typeahead.js"></script>
+    <script src="../bt/assets/js/bootstrap-affix.js"></script>
+
+
+
+
+
+
+    <script src="../bt/js/holder/holder.js"></script>
+    <script src="../bt/assets/js/prettify.js"></script>
+    <link href="../bt/assets/login-box.css" rel="stylesheet" type="text/css" />
+    <script src="../bt/assets/js/application.js"></script>
+    <link rel="stylesheet" type="text/css" href="../bt/js/styles3.css"></link>
+    
+
+<link href="../bt/css/armazon.css" media="screen" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../bt/assets/m4a.js"></script>   
+<link href="../bt/css/bootstrap-editable.css" media="screen" rel="stylesheet" type="text/css"></link>
+
+<!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../bt/js/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../bt/assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../bt/assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../bt/assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../imagenes/favicon.ico">
+  
+<!--bootrsap 3 -->
+
+
+
+    
+<!--barra separadora -->
+<link href="../bt/docs.css" rel="stylesheet"></link>
 <?php 
 } 
 }

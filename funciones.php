@@ -9292,8 +9292,8 @@ $sSQL1Ec= "Select * From usuarios WHERE usuario='".$usuario."' ";
 $result1Ec=mysql_db_query($basedatos,$sSQL1Ec);
 $myrow1Ec = mysql_fetch_array($result1Ec);
 
-$classS=new sterr();
-print $classS->step($myrow1E['descripcionEntidad'],$cadena,$usuario,$entidad);
+//$classS=new sterr();menu
+//print $classS->step($myrow1E['descripcionEntidad'],$cadena,$usuario,$entidad);
 }
     
     
@@ -9595,6 +9595,217 @@ window.location = "/sima/MenuIndex.php";
 
 
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+public function menuOperacionesBoot($rutaPrincipal,$tituloMenuPrincipal,$mainmenu,$primario,$rutasalir,$rutapasswd,$usuario,$entidad,$rutamenuprincipal,$tipomodulo,$rutaimagen,$basedatos){
+    $fecha1=date("Y-m-d");
+    $hora1=date("H:i:s");
+
+    
+    
+    
+/*    
+<div class="bs-example">
+      <ul class="nav nav-pills">
+        <li class="active">
+        <a href="#">Menu Principal</a></li>
+        <li class="dropdown">
+          <a id="drop4" role="button" data-toggle="dropdown" href="#">Extras <b class="caret"></b></a>
+          <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a id="drop5" role="button" data-toggle="dropdown" href="#">Reportes  <b class="caret"></b></a>
+          <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a id="drop6" role="button" data-toggle="dropdown" href="#">Transacciones <b class="caret"></b></a>
+          <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop6">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
+          </ul>
+        </li>
+      </ul> <!-- /tabs -->
+    </div> <!-- /example -->      
+    */
+    
+echo '<div class="bs-example">
+      <ul class="nav nav-pills">
+        <li class="active">';
+
+print '<a href="'.$rutaPrincipal.'">'.$tituloMenuPrincipal.'</a></li>';
+
+/*
+echo '<li class="dropdown">
+          <a id="drop4" role="button" data-toggle="dropdown" href="#">Extras <b class="caret"></b></a>
+          <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
+          </ul>
+        </li>';
+*/
+
+    
+    
+//   
+$sSQLmp= "Select * From usersmodules WHERE entidad='".$entidad."' and usuario='".$usuario."'  and main='".$mainmenu."' order by secondary ASC ";
+$resultmp=mysql_db_query($basedatos,$sSQLmp);
+$myrowmp = mysql_fetch_array($resultmp);
+
+
+if($myrowmp[0]!=NULL){
+
+
+$sSQLmp= "Select * From usersmodules WHERE entidad='".$entidad."' and usuario='".$usuario."'  and primario='".$primario."' 
+    and
+extension>0    
+group by secondary order by secondary ASC ";
+$resultmp=mysql_db_query($basedatos,$sSQLmp);
+while($myrowmp = mysql_fetch_array($resultmp)){
+
+//AQUI TRAIGO LOS ENCABEZADOS DE LOS MENUS
+//print 'stm_aix("p0i1","p0i0",[0,"'.$myrowmp['secondary'].'","","",-1,-1,0,"","_self","","","","",0,0,0,"","",0,0,0,1,1,"#E6EFF9",1,"#E6EFF9",1,"",,3,0,0,0,"#E6EFF9","#434142","#FFFFFF","#434142","bold 8pt Verdana","bold 8pt Verdana"],100,33);
+//stm_bp("p1",[1,4,-20,2,0,5,0,0,100,"",-2,"",-2,50,2,3,"#6bb5d5","#6bb5d5","",3,1,1,"#6bb5d5"]);';
+    
+            
+
+
+
+
+//EL PRIMERO
+echo '<li class="dropdown">';
+echo '<a id="drop4" role="button" data-toggle="dropdown" href="#"><small>'.  $myrowmp['secondary'].'<b class="caret"></b></small></a>';
+          
+          
+          
+        
+//AQUI VAN LOS SUBMENUS
+
+
+echo '<ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop6">';
+ $sSQLmp1= "Select * From usersmodules WHERE entidad='".$entidad."' and usuario='".$usuario."' 
+and
+main='".$myrowmp['main']."'
+        
+and primario='".$myrowmp['primario']."' 
+        and
+        secondary='".$myrowmp['secondary']."' 
+                and
+extension>0 
+group by extension    
+";
+$resultmp1=mysql_db_query($basedatos,$sSQLmp1);
+while($myrowmp1 = mysql_fetch_array($resultmp1)){
+$sSQLmpv2= "Select * From extensionmodules WHERE keyEM='".$myrowmp1['extension']."'";
+$resultmpv2=mysql_db_query($basedatos,$sSQLmpv2);
+$myrowmpv2 = mysql_fetch_array($resultmpv2); 
+
+if($myrowmpv2['keyEM']==$myrowmp1['extension']){
+//print 'stm_aix("p1i0","p0i1",[0,"'.$myrowmpv2['name'].'","","",-1,-1,0,"'.trim($myrowmpv2['ruta']).'?main='.$_GET['main'].'&warehouse='.$_GET['warehouse'].'&datawarehouse='.$primario.'","_self","","","","",0,0,0,"","",0,0,0,0,1,"#E6EFF9",1,"#6bb5d5",0,"","",3,3,0,0,"#E6EFF9","#000000","#FFFFFF","#434142"],165,20);';
+
+//DEBEN IR LOS UL DENTRO DEL WHILE    
+            //MENU SECUNDARIO
+            
+            echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="'.trim($myrowmpv2['ruta']).'?main='.$_GET['main'].'&warehouse='.$_GET['warehouse'].'&datawarehouse='.$primario.'"><small>'.strtolower($myrowmpv2['name']).'</small></a></li>';
+           
+          
+    
+    $descripcion='Accesando a: '.$_GET['warehouse'].', ruta: '.$myrowmpv2['ruta'];
+$agrega = "INSERT INTO logs (
+descripcion,almacenSolicitante,almacenDestino,usuario,hora,fecha,entidad,folioVenta,cuartoIngreso,cuartoTransferido)
+values
+('".$descripcion."','".$primario."','".$_GET['warehouse']."',
+'".$usuario."','".$hora1."','".$fecha1."','".$entidad."','',
+'','')";
+//mysql_db_query($basedatos,$agrega);
+echo mysql_error();
+}else{
+    $actualiza10 = "DELETE FROM usersmodules
+
+WHERE
+
+keyum='".$myrowmp1['keyum']."'
+
+
+";
+mysql_db_query($basedatos,$actualiza10);
+echo mysql_error(); //elimina la basura que queda en los modulos, si exxiste
+}
+}
+/*
+*/
+
+
+echo '</ul>';
+echo '</li>';//TERMINA EL LI PRINCIPAL
+
+}//DEBEN IR DESPUES DEL WHILE
+
+echo   '</ul>
+        </li>';
+
+
+
+
+
+
+
+
+print '
+      </ul>
+    </div>
+';
+
+
+
+}else{?>
+<script type="text/javascript">
+//window.alert("NO TIENES PERMISOS PARA ESTAR EN ESTE LUGAR");    
+//window.location = "/sima/MenuIndex.php";
+</script>
+<?php 
+}
+/*
+$sSQL1E= "Select * From entidades WHERE codigoEntidad='".$entidad."' ";
+$result1E=mysql_db_query($basedatos,$sSQL1E);
+$myrow1E = mysql_fetch_array($result1E);
+
+$classS=new sterr();
+print $classS->step($myrow1E['descripcionEntidad'],$cadena,$usuario,$entidad);*/
+}//cierra funcion        
+        
+        
+        
+        
+        
+        
+        
+        
 
 
 
@@ -10508,6 +10719,94 @@ print '</html>';
     }
     
     
+    
+    
+}
+
+
+
+
+
+class encabezadoFechas{
+    
+    public function headDate($fecha1){?>
+        <div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading"></div>     
+     
+<table class="table"> 
+    
+    <th><div class="col-lg-6"><small>Fecha Inicial</small></div></th>    
+    <th><div class="col-lg-6"><small>Fecha Final</small></div></th>
+    
+    
+<tr> 
+    
+<td>    
+
+
+  <div class="col-lg-6">
+  <div class="input-group">
+      <input  type="text" name="fechaInicial" id="campo_fecha1" value="<?php
+		 if($_POST['fechaInicial']){
+		 echo $_POST['fechaInicial'];
+		 } else {
+		 echo $fecha1;
+		 }
+		 ?>" class="form-control" ></input>
+         <span class="input-group-btn">
+<button class="btn btn-default btn-link btn-lg" type="button" id="lanzador1"><span class="glyphicon glyphicon-calendar"></span></button>
+         </span>
+  </div>
+   
+  </div><!-- /.col-lg-6 -->
+ 
+</td>  
+
+  
+    
+
+<td> 
+    
+ 
+  <div class="col-lg-6">
+       <div class="input-group">
+      <input id="campo_fecha2" name="fechaFinal" type="text" value="<?php
+		 if($_POST['fechaFinal']){
+		 echo $_POST['fechaFinal'];
+		 } else {
+		 echo $fecha1;
+		 }
+		 ?>" class="form-control" >
+         <span class="input-group-btn">
+        <button class="btn btn-default btn-link btn-lg" type="button" id="lanzador2"><span class="glyphicon glyphicon-calendar"></span></button>
+      </span>
+              
+          </div>
+  </div>
+
+
+
+</td>
+
+
+</tr>
+    
+    
+    <tr>
+        <td>
+<div class="col-lg-6">            
+<input data-loading-text="Cargando..." class="btn btn-primary" type="submit" name="generarReporte"  value="Generar Reporte" />
+</div>        
+        </td>        
+        <td></td> 
+        
+    </tr>    
+     
+</table>     
+</div>
+<?php
+    }
     
     
 }

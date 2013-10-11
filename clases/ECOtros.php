@@ -110,14 +110,16 @@ $estilo->styles();
 
      <tr >
           <th width="5"  align="left">#</th>
-         <th width="30"  align="left">FVenta/Recibo</th>
-         <th width="30"  align="left">FechaCierre</th>
+          <th width="5"  align="left">#Sis</th>
+         <th width="30"  align="left">FolioVenta<br>Recibo</th>
+         <th width="30"  align="left">Fecha<br>Aplicacion</th>
+         <th width="30"  align="left">Fecha<br>Cierre</th>
        <th width="30"  align="left">Vigencia</th>
-       <th width="316" align="left">Responsable Cuenta </th>
-       <th width="50" align="left" >Debe</th>
+       <th width="316" align="left">Responsable</th>
+       <th width="50" align="left" >Cargos</th>
 
-        <th width="50" align="left" >Haber</th>
-       <th width="50" align="left" >Saldo</th>
+        <th width="50" align="left" >Abonos</th>
+       
      </tr>
 	 
      
@@ -129,7 +131,7 @@ $estilo->styles();
 //**********************ABONOS DE ASEGURADORA***************
 $sSQL1a="SELECT sum(precioVenta*cantidad)  as abonos
 
-FROM
+FROM  
 cargosCuentaPaciente
 WHERE
 entidad='".$entidad."'
@@ -175,9 +177,18 @@ $sSQL= "Select * From cargosCuentaPaciente
  where entidad='".$entidad."' AND 
 fecha1>='".$_POST['fechaInicial']."' and fecha1<='".$_POST['fechaFinal']."'
 and
-(tipoTransaccion='totros' or tipoTransaccion='devtotros')
-
-group by folioVenta
+(
+tipoTransaccion='abotros' or
+tipoTransaccion='totros' or 
+tipoTransaccion='devotr' or 
+tipoTransaccion='AJOXINCDEV' or
+tipoTransaccion='devotr' or 
+tipoTransaccion='HLCAJOTR' or
+tipoTransaccion='devtotros'
+)
+and
+(folioVenta!='' or folioVentaOtros!='')
+order by fecha1 ASC
 
  ";
 $result=mysql_db_query($basedatos,$sSQL); 
@@ -185,6 +196,10 @@ $result=mysql_db_query($basedatos,$sSQL);
 
 
 while($myrow = mysql_fetch_array($result)){
+
+if($myrow['folioVenta']!='' or $myrow['folioVentaOtros']!=''){  
+    
+    
 if($col){
 $color = '#FFCCFF';
 $col = "";
@@ -228,7 +243,21 @@ $col = "";
  
  
  
+if($myrow['folioVentaOtros']!=NULL){
+      $sSQLcp="SELECT paciente
+FROM
+clientesInternos
+WHERE
+entidad='".$entidad."'
+and
 
+folioVenta='".$myrow['folioVentaOtros']."'
+ 
+ ";
+$resultcp=mysql_db_query($basedatos,$sSQLcp);
+$myrowcp = mysql_fetch_array($resultcp);  
+$myrow['folioVenta']=$myrow['folioVentaOtros'];
+}else{
   $sSQLcp="SELECT paciente
 FROM
 clientesInternos
@@ -237,30 +266,75 @@ entidad='".$entidad."'
 and
 
 folioVenta='".$myrow['folioVenta']."'
+ 
  ";
 $resultcp=mysql_db_query($basedatos,$sSQLcp);
 $myrowcp = mysql_fetch_array($resultcp);    
- 
+}
 ?>
      <tr  >
           <td   align="left"><?php echo $bandera;?></td>
-       <td   align="left">
-           <?php 
-         
-           echo $myrow['folioVenta'];    
-           
-           
+ 
+          
+                <td   align="left">
+          
+ <?php   
+
+    echo $myrow['keyCAP'];
+
            
            ?></td>
        
-       <td align="left">
+
+          
+          
+          
+      <td   align="left">
+           <?php 
+         
+if($myrow['tipoTransaccion']=='HLCAJOTR' or $myrow['tipoTransaccion']=='abotros' or $myrow['tipoTransaccion']=='devtotros' ){
+           echo $myrow['numRecibo'];    
+           }else{
+           echo $myrow['folioVenta'];        
+           }
+           
+           
+           ?></td>          
+          
+          
+          
+          
+          <td align="left">
+<?php            if($myrow['fecha1']!=NULL){
+               echo cambia_a_normal($myrow['fecha1']);
+           }else{
+               echo '---';
+           }
+?>           
+           </td>          
+          
+          
+          
+          
+          <td align="left">
 <?php            if($myrow['fechaCierre']!=NULL){
                echo cambia_a_normal($myrow['fechaCierre']);
            }else{
                echo '---';
            }
 ?>           
-           </td>       
+           </td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
        
        <td align="left">
 <?php            if($myrow['fechaVencimiento']!=NULL){
@@ -276,8 +350,8 @@ $myrowcp = mysql_fetch_array($resultcp);
 <a href="#" onClick="javascript:ventanaSecundaria('../cargos/detallesOtros.php?fechaInicial=<?php echo $_POST['fechaInicial']; ?>&fechaFinal=<?php echo $_POST['fechaFinal']; ?>&folioVenta=<?php echo $myrow['folioVenta']; ?>&paciente=<?php echo $myrowcp['paciente'];?>')">
 E Cuenta	        
            <?php 
-           
-           //echo $myrowcp['paciente'];
+           echo '<br>';
+           echo $myrow['tipoTransaccion'];
 
            
            ?><br />
@@ -285,98 +359,45 @@ E Cuenta
           
           
           
-       <td  align="left">
+<td  align="left">
+
+    
+	   <?php //DEBE
+           //echo $myrow['tipoTransaccion'];
+           if( $myrow['tipoTransaccion']=='totros' or $myrow['tipoTransaccion']=='devotr' or $myrow['tipoTransaccion']=='AJOXINCDEV'){ 
+           $d=$myrow['precioVenta']*$myrow['cantidad'];  
+           echo '$'.number_format($myrow['precioVenta']*$myrow['cantidad'],2);
+	   $dt[0]+=$myrow['precioVenta']*$myrow['cantidad'];
+	   }else{
+               //echo '$ 0.00';
+           }
+           
+           ?>    
 	   
-	   
-	   <?php 
 
-$sSQLd= "Select sum(precioVenta*cantidad) as debe
- from cargosCuentaPaciente
- where entidad='".$entidad."' 
- AND 
-folioVenta='".$myrow['folioVenta']."' 
-AND
-(tipoTransaccion='totros' or tipoTransaccion='devotr' or tipoTransaccion='AJOXINCDEV')
-  
- and
- gpoProducto=''
-
-   ";
-
-$resultd=mysql_db_query($basedatos,$sSQLd); 
-$myrowd = mysql_fetch_array($resultd);
-
-
-$sSQLd1= "Select sum(precioVenta*cantidad) as debe
- from cargosCuentaPaciente
- where entidad='".$entidad."' 
- AND 
-folioVentaOtros='".$myrow['folioVenta']."' 
-AND
-( tipoTransaccion='devotr' or tipoTransaccion='AJOXINCDEV')
-  
- and
- gpoProducto=''
-
-   ";
-
-$resultd1=mysql_db_query($basedatos,$sSQLd1); 
-$myrowd1 = mysql_fetch_array($resultd1);
-
-
-
-$d=($myrowd['debe']+$myrowd1['debe']);
-$dt[0]+=($myrowd['debe']+$myrowd1['debe']);
-echo '$'.number_format($myrowd['debe']+$myrowd1['debe'],2);
-?>
-       </td>
+</td>
           
           
           
        
+
+          
+          
 <td  align="left">
 <?php 
-$sSQLh= "Select sum(precioVenta*cantidad) as haber
- from cargosCuentaPaciente
- where entidad='".$entidad."' 
- AND 
-
-folioVenta='".$myrow['folioVenta']."' 
-AND
-( tipoTransaccion='HLCAJOTR' or tipoTransaccion='abotros' or tipoTransaccion='devtotros'
-)
-  
- and
- gpoProducto=''
-
-   ";
-
-$resulth=mysql_db_query($basedatos,$sSQLh); 
-$myrowh = mysql_fetch_array($resulth); 
 
 
-$sSQLh1= "Select sum(precioVenta*cantidad) as haber
- from cargosCuentaPaciente
- where entidad='".$entidad."' 
- AND 
-
-folioVentaOtros='".$myrow['folioVenta']."'
-AND
-( tipoTransaccion='HLCAJOTR' or tipoTransaccion='abotros' or tipoTransaccion='devtotros'
-)
-  
- and
- gpoProducto=''
-
-   ";
-
-$resulth1=mysql_db_query($basedatos,$sSQLh1); 
-$myrowh1 = mysql_fetch_array($resulth1); 
+if($myrow['tipoTransaccion']=='HLCAJOTR' or $myrow['tipoTransaccion']=='abotros' or $myrow['tipoTransaccion']=='devtotros' ){ 
 
 
-$h=($myrowh['haber']+$myrowh1['haber']);
-$ht[0]+=($myrowh['haber']+$myrowh1['haber']);
-echo '$'.number_format($myrowh['haber']+$myrowh1['haber'],2);
+$h=$myrow['precioVenta']*$myrow['cantidad'];
+$ht[0]+=$myrow['precioVenta']*$myrow['cantidad'];$signo=NULL;
+echo '$'.number_format($myrow['precioVenta']*$myrow['cantidad'],2);
+}else{
+   //echo '$ 0.00';
+}
+           
+
 ?></td>
 
 
@@ -384,30 +405,29 @@ echo '$'.number_format($myrowh['haber']+$myrowh1['haber'],2);
 
 
 
-       <td  align="left">
-	  <?php 
-       /*$opera=$debe-$haber;         
-       if($opera==0){
-       echo '<div align="center" class="success">'; 
-       echo '$'.number_format($opera,2);
-       echo '</div>';
-       }else{
-       echo '<div align="center" class="error">'; 
-       echo '$'.number_format($opera,2);    
-       echo '</div>';
-       }*/
+       
           
-      $saldo=$d-$h;
-      
-      echo '$'.number_format($saldo,2);
           
-       ?>   </a>	   </td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
      </tr>
-     <?php }?>
+<?php }}?>
 
        <tr>
         <td class="notice">Totales</td>
-   
+          <td width="100">&nbsp;</td>
+       <td width="100">&nbsp;</td>
+      
         <td width="100">&nbsp;</td>
        <td width="100">&nbsp;</td>
        <td  width="100">&nbsp;</td>

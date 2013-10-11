@@ -1,6 +1,7 @@
 <?php  
 $idSucursal='106136';
-
+ $hour= date("H")-1;$min=date("i");$a=date("a");
+ $hora1= $hour.':'.$min.' '.$a;
 
 
 

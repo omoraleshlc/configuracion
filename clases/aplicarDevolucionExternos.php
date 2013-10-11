@@ -381,7 +381,7 @@ $sigue='si';
  $sigue='no';   
 }
 
-if($myrow3a['clientePrincipal']!=''){
+if($myrow3['clientePrincipal']!=''){
 $myrow1['cantidadAseguradora']=$myrow1['precioVenta']*$myrow1['cantidad'];
 $myrow1['cantidadParticular']='';
 }else{

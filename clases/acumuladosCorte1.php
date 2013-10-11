@@ -182,6 +182,11 @@ switch($myrow1a['tipoTransaccion']){
 	case "devxaseg"://DEV.  TRASLADO ASEGURADORA 	C
         $devtrasladoaseg[0]+=$myrow1a['precioVenta']*$myrow1a['cantidad'];
 	break;
+    
+        case "DEVCXCCIAS"://DEV. DESCUENTO A ASEGURADORAS
+        $devolucionDescuentoAseguradoras[0]+=$myrow1a['precioVenta']*$myrow1a['cantidad'];
+	break;
+    
         //************************************
     	
   

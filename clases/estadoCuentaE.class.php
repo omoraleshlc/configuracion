@@ -3,6 +3,10 @@ class eCuentasE{
 public function eCuentaE($descripcionTransaccion,$mostrar,$usuario,$entidad,$almacen,$fecha1,$hora1,$dia,$usu,$nT,$basedatos){
 
 
+$estilo=new muestraEstilosV2();
+$estilo->styles();
+
+
 $cargosCia=new acumulados();
 
 $sSQLCent= "Select * From entidades where codigoEntidad='".$entidad."'";
@@ -1341,11 +1345,7 @@ echo mysql_error();
 
 
 
-<script language=javascript> 
-function ventanaSecundaria (URL){ 
-   window.open(URL,"ventanaSecundaria","width=800,height=600,scrollbars=YES,resizable=YES, maximizable=YES") 
-} 
-</script> 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -1355,65 +1355,71 @@ function ventanaSecundaria (URL){
 </head>
 
 
-<title></title>
-<?php
-$link=new ventanasPrototype();
-$link->links();
 
-$estilo=new muestraEstilos();
-$estilo->styles();
-?>
-  <style type="text/css">
-    .popup_effect1 {
-      background:#11455A;
-      opacity: 0.2;
-    }
-    .popup_effect2 {
-      background:#FF0041;
-      border: 3px dashed #000;
-    }
-    
-  </style>	
+
   
-  <script languaje="JavaScript">
-            
-var reloj=new Date(); 
 
-          varjs=  reloj.getHours()+":"+reloj.getMinutes(); 
 
-</script>
+ 
 
 
 
-<form id="form1" name="form1" method="post" >
-    <?php 
-   
-    //require('/configuracion/clases/encabezado.php');
-    //ABRE ENCABEZADO
-    ?>
 
 <?php if(!$folioVenta){
 $folioVenta=$_GET['folioVenta'];
 }
 ?>
 
-<?php
-$link=new ventanasPrototype();
-$link->links();
 
-$estilo=new muestraEstilos();
-$estilo->styles();
-?>
 	
   
-  <script languaje="JavaScript">
-            
-var reloj=new Date(); 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+  <header >
+  <div class="container">   
 
-          varjs=  reloj.getHours()+":"+reloj.getMinutes(); 
+      
+      <div class="list-group">
+          
+<a href="#" class="list-group-item active">
+    ESTADO DE CUENTA
+  </a>          
+          
+      </div>      
+      
 
-</script>
+      
+      
+      
+      
 
+      
+      
+      
+      
+      
+ 
+      
+      
+      
+      
+      
+      
 
 
 <form id="form1" name="form1" method="post" action="#">
@@ -1442,24 +1448,38 @@ $SEGURO=$myrow['seguro'];
 
 ?>
 
-<h1>ESTADO DE CUENTA</h1>
-  <table width="993" style="border: 1px solid #CCC;">
+
+
+
+  
+    
+    
+    
+
+  <table class="table table-responsive" >
 
     <tr >
-      <td width="124" align="left" ><b>FOLIO N&deg;</b></td>
-      <td width="655" align="center" > <b>PACIENTE: <span class="titulomedio"><?php echo $myrow['paciente']; ?></span></b></td>
-      <td width="200" align="left" ><b>DEPTO - CUARTO</b></td>
+      <td  align="left" ><small>FOLIO: </small></td>
+      <td  align="left" ><small>PACIENTE: <?php echo $myrow['paciente']; ?></small></td>
+      <td  align="left" ><small>DEPTO - CUARTO: </small></td>
     </tr>
 	
 	<?php if($myrow['statusCortesia']=='si'){ ?>
     <tr>
-      <td colspan="3" style="text-align: center"><span class="codigos" style="size:14"><blink>*****EL PACIENTE ES DE CORTESIA****</blink></span></td>
+      <td ><small><blink>*****EL PACIENTE ES DE CORTESIA****</blink></small></td>
     </tr>
     <?php } ?>
 	
 	<tr>
-      <td align="left" style="text-align: center"><span ><?php echo $myrow['folioVenta']; ?></span></td>
-      <td ><span  style="text-align: left">Seguro: <span class="normalmid">
+      
+            
+            
+       <td ><small ><?php echo $myrow['folioVenta']; ?></small></td>
+      
+      
+      
+      <td >
+          <small>Seguro: 
         <?php 
 		
 	$segur= $myrow['seguro'];
@@ -1475,8 +1495,13 @@ $myrow4 = mysql_fetch_array($result4);
 echo particular;
 }
 ?>
-        - <?php echo $myrow['credencial']; ?></span></span></td>
-      <td><span >
+        - <?php echo $myrow['credencial']; ?></small>
+      </td>
+      
+      
+      
+      
+      <td><small >
         <?php $id_almacen=$myrow['almacen']; 
 	  $sSQL1= "SELECT almacen,descripcion
 FROM
@@ -1491,14 +1516,28 @@ $result1=mysql_db_query($basedatos,$sSQL1);
 $myrow1 = mysql_fetch_array($result1);
 echo $myrow1['descripcion'];
 	  ?>
-        - <?php echo $myrow['cuarto']; ?></span></td>
+        - <?php echo $myrow['cuarto']; ?></small></td>
+       
+       
     </tr>
+      
+      
+      
+      
+      
     <tr>
-      <td colspan="2" style="text-align: left" >Fecha/Hora de Inter.: <span class="normalmid"><?php echo $myrow['fecha']." / ".$myrow['hora']; ?></span></td>
+      <td  ><small>Fecha/Hora de Inter.: <?php echo $myrow['fecha']." / ".$myrow['hora']; ?></small></td>
       <td>&nbsp;</td>
+       <td>&nbsp;</td>
+       
     </tr>
+      
+      
+      
+      
+      
     <tr>
-      <td colspan="2" style="text-align: left" >M&eacute;dico de Inter.: <span class="normalmid">
+      <td  ><small>M&eacute;dico de Inter.: 
         <?php 
 
 	if ($myrow['medico']) {
@@ -1520,25 +1559,86 @@ $myrow3 = mysql_fetch_array($result3);
 		 echo $myrow['medicoForaneo'];    
 	 }
 ?>
-      </span></td>
+      </small></td>
+        
+        
+        
+      <td>&nbsp;</td>
+       <td>&nbsp;</td>
+      
+    </tr>
+      
+      
+      
+      
+    <tr>
+      
+        <td ><small>Diagn&oacute;stico: <?php echo $myrow['dx']; ?></small></td>
+       <td>&nbsp;</td>
       <td>&nbsp;</td>
     </tr>
+      
+      
+      
+      
     <tr>
-      <td colspan="2" style="text-align: left" >Diagn&oacute;stico: <span class="normalmid"><?php echo $myrow['dx']; ?></span></td>
+      <td ><small>Fecha/Hora de Alta: <?php echo $myrow['fechaCierre']." / ".$myrow['horaCierre']; ?></small></td>
       <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td colspan="2" style="text-align: left" ><span  style="text-align: left">Fecha/Hora de Alta: <span class="normalmid"><?php echo $myrow['fechaCierre']." / ".$myrow['horaCierre']; ?></span></span></td>
-      <td>&nbsp;</td>
+       <td>&nbsp;</td>
     </tr>
 	
 	<?php if($myrow['numeroFactura']){ ?>
     <tr>
-      <td colspan="2" style="text-align: left" ><span  style="text-align: left">Numero Factura:  <span class="normalmid"><?php echo $myrow['numeroFactura']; ?></span></span></td>
+      <td ><small>Numero Factura:  <span class="normalmid"><?php echo $myrow['numeroFactura']; ?></small></td>
       <td>&nbsp;</td>
+       <td>&nbsp;</td>
     </tr>
 	<?php } ?>
   </table>
+    
+    
+    
+
+
+    
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
   <p align="center">
   <?php 
   
@@ -1881,7 +1981,7 @@ function ventanaSecundaria10 (URL){
 } 
 </script>
 <div align="center">
-<span >Opciones de Grupo de Producto: </br></span>
+
       <?php   $sSQL7= "Select gpoProducto From cargosCuentaPaciente
           where entidad='".$entidad."'
              and
@@ -1893,8 +1993,10 @@ function ventanaSecundaria10 (URL){
 $result7=mysql_db_query($basedatos,$sSQL7);
 echo mysql_error();
 	  ?>
-          <select name="gpoProducto1"  id="gpoProducto1" onChange="this.form.submit();" >
-		  <option value="">Todos</option>
+    
+    
+          <select name="gpoProducto1"  class="form-control" onChange="this.form.submit();" >
+		  <option value="">GRUPOS DE PRODUCTO</option>
             <?php
 		   while($myrow7 = mysql_fetch_array($result7)){
 
@@ -1917,21 +2019,30 @@ echo mysql_error();
 
 		?>
           </select>
+    
 <p></p>
-    <table width="817" class="table table-striped" style="border: 1px solid #CCC;">
+
+
+
+<div class="table-responsive">
+    <table  class="table"  >
 
     <tr >
-      <th width="19"   scope="col"><div align="center">#</div></th>
-      <th width= "56"   scope="col"><div align="center"># Reg</div></th>
-      <th width= "45"   scope="col"><div align="center">Fecha</div></th>
-      <th width= "23"   scope="col"><div align="center">C</div></th>
-      <th width= "431"   scope="col"><div align="center">Descripcion</div></th>
-      <th width= "52"   scope="col"><div align="center">Totales</div></th>
-      <th width= "25"   scope="col"><div align="center">N</div></th>
-      <th width= "59"   scope="col">Part</th>
-      <th width= "59"   scope="col">Benef</th>
-	  <th  width= "69"  scope="col"><div align="center">Aseg</div></th>
-	  </tr>
+      <th ><div align="left"><small>#</small></div></th>
+      <th><div align="left"><small># Reg</small></div></th>
+      <th ><div align="left"><small>Fecha</small></div></th>
+      <th ><div align="left"><small>C</small></div></th>
+      <th ><div align="left"><small>Descripcion</small></div></th>
+      <th ><div align="left"><small>Totales</small></div></th>
+      <th ><div align="left"><small>N</small></div></th>
+      <th ><div align="left"><small>Part</small></div></th>
+      <th ><div align="left"><small>Benef</small></div></th>
+      <th  ><div align="left"><small>Aseg</small></div></th>
+    </tr>
+        
+        
+        
+        
     <tr>
 
 
@@ -2002,23 +2113,33 @@ $signo=NULL;
 
 
  <tr  >
-      <td height="24"  ><?php print $a;?></td>
-      <td width="56"   align="center"><?php
+      <td  ><small><?php print $a;?></small></td>
+      <td align="center"><small><?php
 	echo $myrow['keyCAP'];
-	   ?></td>
-      <td width="45"  ><?php
+	   ?></small></td>
+      
+      
+      <td ><small><?php
 	echo cambia_a_normal($myrow['fecha1']);
 
         
         
-	   ?></td>
-      <td width="23"  ><div align="center">
+	   ?></small></td>
+      
+      
+      <td  >
+          <div align="center">
+          <small>    
         <?php
 	echo round($myrow['cantidad'],3);
 	//echo $myrow['cantidad'];
         ?>
+          </small>      
       </div></td>
-      <td width="431"  ><?php
+      
+      
+      
+      <td   ><small><?php
 		
 		echo '<span >';
        echo $myrow['descripcionArticulo'];
@@ -2148,66 +2269,83 @@ echo mysql_error();
 Editar</a>
 <?php } */?>
 
-</span>
+          </small>
 	   <hr />
       </td>
+      
+      
+      
+      
 
-      <td width="52"  ><div align="center">
+      <td   >
+          <div align="center">
+              <small>
 <?php
 echo '$'.number_format(($myrow['precioVenta']*$myrow['cantidad'])+($myrow['iva']*$myrow['cantidad']),2);
-?>
-      </div></td>
-      <td width="25"  ><div align="center">
+?></small>
+      </div>
+      </td>
+      
+      
+      
+      <td  >
+          <div align="center">
+              <small>
         <?php
 echo $myrow['naturaleza'];
 
-?>
+?></small>
       </div></td>
       
       
       
       
-      <td width="59"  ><div align="center">
+      <td   ><div align="center">
 
-  <span >
+<small>
 <?php
 
 $triggerParticular=sprintf("%01.2f", $myrow['cantidadParticular']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['ivaParticular']*$myrow['cantidad']);
 echo '$'.number_format(($myrow['cantidadParticular']*$myrow['cantidad'])+($myrow['ivaParticular']*$myrow['cantidad']),2);
 
 ?>
-</span>
+</small>
       </div></td>
       
       
-           <td width="59"  ><div align="center">
+           <td  ><div align="center">
 
-  <span >
+  <small>
 <?php
 
 $triggerBeneficencia=sprintf("%01.2f", $myrow['cantidadBeneficencia']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['ivaBeneficencia']*$myrow['cantidad']);
 echo '$'.number_format(($myrow['cantidadBeneficencia']*$myrow['cantidad'])+($myrow['ivaBeneficencia']*$myrow['cantidad']),2);
 
 ?>
-</span>
+</small>
       </div></td> 
       
       
       
       
 
-<td width="69"  ><div align="center">
-  <span >
+<td   >
+    <div align="center">
+  <small >
   <?php
 $triggerAseguradora=sprintf("%01.2f", $myrow['cantidadAseguradora']*$myrow['cantidad'])+sprintf("%01.2f", $myrow['ivaAseguradora']*$myrow['cantidad']);  
   
 echo '$'.number_format(($myrow['cantidadAseguradora']*$myrow['cantidad'])+($myrow['ivaAseguradora']*$myrow['cantidad']),2);
 ?>
-</span>
+</small>
 
 
 </div></td>
+      
 </tr> 
+        
+        
+        
 
 <?php //require('/configuracion/clases/operacionesGlobales.php');
 //ABRE OPERACIONES GLOBALES
@@ -2485,6 +2623,9 @@ $transB=$my7['codigoTT'];
     <?php  }}?>
     <input name="menu" type="hidden" value="<?php echo $menu;?>" />
   </table>
+</div>   
+    
+    
 	</p>	
   </div>
   
@@ -2584,14 +2725,22 @@ $ben=sprintf("%01.2f", $cargosBeneficencia[0]-$devolucionBeneficencia[0])-(($abo
       
   </p>
   
-  
-  <table width="312"   style="border: 1px solid #CCC;">
+    
+    
+    
+    <div class="container"> 
+  <table width="312" class="table table-striped"  >
     <tr>
-      <th width="212"   scope="col"><div align="left">Descripci&oacute;n</div></th>
-      <th width="62"   scope="col"><div align="left">Importe</div></th>
+      <th width="212"   scope="col"><div align="left"><small>Descripci&oacute;n</small></div></th>
+      <th width="62"   scope="col"><div align="right"><small>Importe</small></div></th>
 
     </tr>
-    <tr>
+    
+      
+      
+      
+      
+      <tr>
 <?php
 
 
@@ -2668,21 +2817,32 @@ order by descripcionGP ASC
 $resultaa1=mysql_db_query($basedatos,$sSQLaa1);
 $myrowaa1 = mysql_fetch_array($resultaa1);
 ?>
-      <td   ><div align="left"><span > <?php echo $myrowaa1['descripcionGP']; ?></span></div></td>
-      <td   align="right" ><?php
+      
+      <td   ><div align="left"><small > <?php echo $myrowaa1['descripcionGP']; ?></small></div></td>
+      <td   align="right" ><small><?php
 
           echo "$".number_format($myrowac['cargo']-$myrowaa['abono'],2);
-           ?></td>
-    </tr>
+           ?></small></td>
+  </tr>
     <?php }}?>
 
-            <td  align="right" >
+         
+      
+        
+      
+      <tr>
+          
+          <td></td>
+         <td  align="right" ><small>
                 IVA:
                 <?php
                   echo "$".number_format($ivaTotal,2);
-           ?></td>
+           ?></small></td>
+      </tr>
+          
+          
   </table>
-
+  </div>
 
   
 
@@ -2874,50 +3034,108 @@ $mdes = mysql_fetch_array($rdes);
 $totalCargo= $mc['cargos']-$md['devolucion']-$mr['regreso']-$mdes['descuento'];
 $totalAbono=$ma['abonos']; */
 ?>
-<table width="380" border="0" align="center"  cellspacing="0" style="border: 1px solid #CCC;">
+      
+  <div class="container">       
+<table class="table table-striped">
     <tr >
-      <td width="25" height="25" >&nbsp;</td>
-      <td width="113" >Cargos</td>
-      <td width="36"  >
+      
+      <th  ><small>Cargos</small></th>
+      <th ><small>Abonos</small></th>
+      <th ><small><div align="right">Total Cuenta</div></small></th>
+    </tr>
+    
+    
+    <tr >
+   <td>
+      <small>
 	  <?php 
 
 	  echo '$'.number_format($totalCargo,2);
 	  
-	  ?>
-	  </td>
-    </tr>
-    <tr >
-      <td height="26">&nbsp;</td>
-      <td >Abonos</td>
-      <td ><?php echo '$'.number_format($totalAbono,2);?></td>
+	  ?></small></td>
+      <td ><small><?php echo '$'.number_format($totalAbono,2);?></small></td>
+      <td><small><div align="right"><?php echo '$'.number_format($TOTAL,2);?></div></small></td>
     </tr>
 	
-	
-	
-    <tr >
-      <td height="26" >&nbsp;</td>
-      <td  >Total</td>
-      <td  ><?php echo '$'.number_format($TOTAL,2);?></td>    </tr>
+
 	
 
 
   </table>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <?php 
-//
-//
-//CIERRA MOSTRAR DATOS EC   
-   ?> 
+###COMPROBACIONES OBLIGATORIAS 1Oct2013 si no son devoluciones
+                  $sql5car= "
+                    SELECT *
+                    FROM
+                    convenios
+                    WHERE
+                    entidad='".$entidad."'
+                        and
+                    numCliente =  '".$myrow1d['clientePrincipal']."'
+                    AND
+                    (departamento='".$myrow1d['almacen']."' or departamento='*')
+                    AND
+                    tipoConvenio='descuentoConvenio'
+                    and
+                    ('".$fecha1."'>=fechaInicial and '".$fecha1."'<=fechaFinal)
+                    ";
+                    $result5car=mysql_db_query($basedatos,$sql5car);
+                    $myrow5car= mysql_fetch_array($result5car);
+                    
+                    if($myrow5car['costo']>0){ 
+if($myrow1d['statusDevolucion']!='si'){
+
+                    $sSQL3a= "
+                    SELECT sum((cantidadAseguradora*cantidad)+(ivaAseguradora*cantidad)) as totales 
+                    From cargosCuentaPaciente 
+                    WHERE  entidad='".$entidad."' and folioVenta = '".$_GET['folioVenta']."' 
+                    and tipoTransaccion='".$my6a['codigoTT']."'";
+                    $result3a=mysql_db_query($basedatos,$sSQL3a);
+                    $myrow3a = mysql_fetch_array($result3a);    
+                    if($myrow3a['totales']>0){$descuentoHecho=$myrow3a['totales'];}
+                    
+                    //echo $totalAseguradora.'  '.$cantidadDescuento.'  '.$descuentoHecho;
+                    $descripcionTransaccion=$my6a['descripcion'];
+                    //$descuentoAseguradora=$myrow5['costo'];
+                    //$totalAseguradora;
+                    $cantidadDescuento=($myrow5car['costo']*0.01)*$totalAseguradora;
+                    //$candadoA=($totalAseguradora-$cantidadDescuento)-$descuentoHecho;
+                    if($descuentoHecho<1){
+                    $candadoA=$cantidadDescuento;
+                    $descuentoA=$cantidadDescuento;
+                    }
+                    
+                    }
+}
 
 
 
-
-
-
-
-
+?>  
 
 
 
@@ -2970,20 +3188,23 @@ $myrow3 = mysql_fetch_array($result3);
 ?>
 <p>&nbsp;</p>
 
-<a name="final">
-    </a>
 
-<table width="590" border="0" align="center" cellpadding="4" cellspacing="0" class="table table-striped" style="border: 1px solid #CCC;">
+
+
+
+
+  <div class="container"> 
+<table class="table table-striped" >
   <tr>
-    <th colspan="2" ><b >Particular</b></th>
+    <th colspan="2" ><small>Particular</small></th>
     <th width="75" >&nbsp;</th>
-     <th colspan="2" ><b >Beneficencia</b></th>
+     <th colspan="2" ><small>Beneficencia</small></th>
     <th width="75" >&nbsp;</th>
-    <th colspan="2" ><b >Aseguradora</b></th>
+    <th colspan="2" ><small>Aseguradora</small></b></th>
   </tr>
   <tr>
-    <td width="137" ><span >Cargos</span></td>
-    <td width="75"><span >
+    <td width="137" ><small >Cargos</small></td>
+    <td width="75"><small >
       <?php 
 	  
 $sSQLpartc= "Select sum(cantidadParticular*cantidad) as totalParticular, sum(ivaParticular*cantidad) as totalIVA From cargosCuentaPaciente WHERE entidad='".$entidad."' and folioVenta = '".$_GET['folioVenta']."' 
@@ -3008,12 +3229,12 @@ $myrowparta = mysql_fetch_array($resultparta);
 
 echo  '$'.number_format($myrowpartc['totalParticular']-$myrowparta['totalParticular'],2);
 ?>
-    </span></td>
+    </small></td>
     <td>&nbsp;</td>
     
     
-        <td width="137" ><span >Cargos</span></td>
-    <td width="75"><span >
+        <td width="137" ><small >Cargos</small></td>
+    <td width="75"><small >
       <?php 
 	  
 $sSQLbenec= "Select sum(cantidadBeneficencia*cantidad) as totalParticular, sum(ivaBeneficencia*cantidad) as totalIVA From cargosCuentaPaciente WHERE entidad='".$entidad."' and folioVenta = '".$_GET['folioVenta']."' 
@@ -3039,7 +3260,7 @@ $myrowbenea = mysql_fetch_array($resultbenea);
 
 echo  '$'.number_format($myrowbenec['totalParticular']-$myrowbenea['totalParticular'],2);
 ?>
-    </span></td>
+    </small></td>
     <td>&nbsp;</td>
     
     
@@ -3053,8 +3274,8 @@ echo  '$'.number_format($myrowbenec['totalParticular']-$myrowbenea['totalParticu
     
     
     
-    <td width="116"><span >Cargos</span></td>
-    <td width="153"><span >
+    <td width="116"><small >Cargos</small></td>
+    <td width="153"><small >
       <?php 
 	  
 $sSQLasegc= "Select sum(cantidadAseguradora*cantidad) as totalAseguradora, sum(ivaAseguradora*cantidad) as totalIVA From cargosCuentaPaciente WHERE entidad='".$entidad."' and folioVenta = '".$_GET['folioVenta']."' 
@@ -3080,7 +3301,7 @@ $myrowasega = mysql_fetch_array($resultasega);
 
 echo  '$'.number_format($myrowasegc['totalAseguradora']-$myrowasega['totalAseguradora'],2);
 ?>
-    </span></td>
+    </small></td>
     
     
     
@@ -3100,14 +3321,14 @@ echo  '$'.number_format($myrowasegc['totalAseguradora']-$myrowasega['totalAsegur
   
   
   <tr>
-    <td><span >IVA</span></td>
-    <td><span ><?php echo  '$'.number_format($myrowpartc['totalIVA']-$myrowparta['totalIVA'],2);?></span></td>
+    <td><small >IVA</small></td>
+    <td><small ><?php echo  '$'.number_format($myrowpartc['totalIVA']-$myrowparta['totalIVA'],2);?></small></td>
     <td>&nbsp;</td>
-    <td><span >IVA</span></td>
-    <td><span ><?php echo  '$'.number_format($myrowbenec['totalIVA']-$myrowbenea['totalIVA'],2);?></span></td>
+    <td><small >IVA</small></td>
+    <td><small ><?php echo  '$'.number_format($myrowbenec['totalIVA']-$myrowbenea['totalIVA'],2);?></small></td>
     <td>&nbsp;</td>
-    <td><span >IVA</span></td>
-    <td><span ><?php echo  '$'.number_format($myrowasegc['totalIVA']-$myrowasega['totalIVA'],2);?></span></td>
+    <td><small >IVA</small></td>
+    <td><small ><?php echo  '$'.number_format($myrowasegc['totalIVA']-$myrowasega['totalIVA'],2);?></small></td>
   </tr>
   
   
@@ -3115,39 +3336,63 @@ echo  '$'.number_format($myrowasegc['totalAseguradora']-$myrowasega['totalAsegur
   
   
   <tr>
-    <td><span >Total</span></td>
-    <td><span ><?php echo  '$'.number_format(($myrowpartc['totalParticular']+$myrowpartc['totalIVA'])-($myrowparta['totalParticular']+$myrowparta['totalIVA']),2);?></span></td>
+    <td><small >Total</small></td>
+    <td><small ><?php echo  '$'.number_format(($myrowpartc['totalParticular']+$myrowpartc['totalIVA'])-($myrowparta['totalParticular']+$myrowparta['totalIVA']),2);?></small></td>
     <td>&nbsp;</td>
     
-    <td><span >Total</span></td>
-    <td><span ><?php echo  '$'.number_format(($myrowbenec['totalParticular']+$myrowbenec['totalIVA'])-($myrowbenea['totalParticular']+$myrowbenea['totalIVA']),2);?></span></td>
+    <td><small >Total</small></td>
+    <td><small ><?php echo  '$'.number_format(($myrowbenec['totalParticular']+$myrowbenec['totalIVA'])-($myrowbenea['totalParticular']+$myrowbenea['totalIVA']),2);?></small></td>
     <td>&nbsp;</td>
     
     
     
-    <td><span >Total</span></td>
-    <td><span ><?php echo  '$'.number_format(($myrowasegc['totalAseguradora']+$myrowasegc['totalIVA'])-($myrowasega['totalAseguradora']+$myrowasega['totalIVA']),2);?></span></td>
+    <td><small >Total</small></td>
+    <td><small ><?php echo  '$'.number_format(($myrowasegc['totalAseguradora']+$myrowasegc['totalIVA'])-($myrowasega['totalAseguradora']+$myrowasega['totalIVA']),2);?></small></td>
   </tr>
 </table>
-
+  </div>
 <p>&nbsp;</p>
-<table width="900" class="table table-striped" style="border: 1px solid #CCC;">
+
+
+
+
+
+
+ 
+
+
+
+  <div class="container"> 
+<!--AQUI VA LA TABLA-->
+<table width="900" class="table table-striped" >
 
   <tr >
-    <th width="76"  ><div align="center">Part</div></th>
-    <th width="76"  ><div align="center">Aseg</div></th>
-    <th width="111"  ><div align="center">Regreso Aseg</div></th>
-    <th width="104"  ><div align="center">Regreso Part </div></th>
-    <th width="89"  ><div align="center">C1</div></th>
-    <th width="100"  ><div align="center">C2</div></th>
-    <th width="95"  ><div align="center">D1</div></th>
-    <th width="88"  ><div align="center">D2</div></th>
-    <th width="77"  ><div align="center">Desc Part </div></th>
-    <th width="84"  ><div align="center">Desc Aseg </div></th>
-    <th width="84"  ><div align="center">Beneficencia</div></th>
+    <th  ><div align="center"><small>Part</small></div></th>
+    <th ><div align="center"><small>Aseg</small></div></th>
+    <th  ><div align="center"><small>Regreso Aseg</small></div></th>
+    <th><div align="center"><small>Regreso Part</small></div></th>
+    <th   ><div align="center"><small>C1</small></div></th>
+    <th  ><div align="center"><small>C2</small></div></th>
+    <th   ><div align="center"><small>D1</small></div></th>
+    <th   ><div align="center"><small>D2</small></div></th>
+    <th   ><div align="center"><small>Desc Part</small></div></th>
+    <th  ><div align="center"><small>Desc Aseg</small></div></th>
+    <th   ><div align="center"><small>Beneficencia</small></div></th>
   </tr>
   <tr  >
-    <td height="48"  ><div align="center"><span >
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+<td  ><div align="center"><span >
 <?php  
 
 
@@ -3284,7 +3529,7 @@ $mPdes = mysql_fetch_array($rPdes);
   
   
   
-  
+
 
   
 
@@ -3294,7 +3539,7 @@ $mPdes = mysql_fetch_array($rPdes);
   
   
   
-if( $totalParticular>1 ||  ($myrow3['statusDevolucion']=='si' and  $descuentoP<1 and $descuentoA<1 )){ 
+if( $totalParticular>=1 ||  ($myrow3['statusDevolucion']=='si' and  $descuentoP<1 and $descuentoA<1 )){ 
 
 
 
@@ -3340,9 +3585,13 @@ $tipoPago='Efectivo';
       <?php if($mostrar==TRUE){ ?>
 
 
-<?php
+<?php if($totalParticular>0 and $totalParticular>-1){ 
+    
+##CANDADOS 11oct2013    
 
-if($totalParticular>0 and $totalParticular>-1){ ?>
+    
+if($u4<1 or $u9<1 or $u11<1){    
+?>
 <a  href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
 &amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;transaccion=particular&amp;precioVenta=<?php echo $totalParticular;?>&amp;modoPago=<?php if($_GET['devolucion']=='si'){echo 'devolucionParticular';}else{ echo 'efectivo';} ?>&amp;tipoTransaccion=particular&amp;tipoPago=<?php echo $tipoPago;?>&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>&statusCortesia=<?php echo $myrow3['statusCortesia'];?>&tipoDevolucion=<?php echo $tipoDevolucion;?>&beneficencia=<?php
 if($myrow3['activaBeneficencia']=='si'){ echo 'si';}?>&statusBeneficencia=<?php if($myrow3['activaBeneficencia']=='si'){ echo 'si';}?>&activaBeneficencia=<?php if($myrow3['activaBeneficencia']=='si'){ echo 'si';}?>&caso=<?php echo $caso;?>','ventana7','680','380','yes');">
@@ -3350,16 +3599,20 @@ if($myrow3['activaBeneficencia']=='si'){ echo 'si';}?>&statusBeneficencia=<?php 
 echo '$'.number_format($totalParticular,2);
 ?>
 </a>
-<?php } else{       
-echo '<img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />';}?>
+<?php } ?>
+<?php } else{  $u1=1;     
+//echo '<img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />';
+}
+?>
 
 
 
       <?php } else { echo '$'.number_format($totalParticular,2);}?>
-      <?php } else{?>
+      <?php } else{$u1=1;?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
+    
       
       
       
@@ -3373,7 +3626,14 @@ echo '<img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />';}?>
       
       
       
-    <td  ><div align="center"><span >
+      
+      
+      
+        
+      
+      
+      
+<td  ><div align="center"><span >
 
 
 
@@ -3518,7 +3778,7 @@ $mPdes = mysql_fetch_array($rPdes);
 
 
 
-if( $totalAseguradora>1 || $myrow3['statusDevolucion']=='si'){ 
+if( $totalAseguradora>=1 || $myrow3['statusDevolucion']=='si'){ 
 
 if($devolucionAseguradora[0]>0 and $myrow3['statusDevolucion']=='si'){ 
 $s= "Select codigoTT From catTTCaja WHERE  devolucionAseguradora='si'";
@@ -3547,12 +3807,26 @@ $tipoPago='Cuentas por Cobrar';
       <?php  if($totalCoaseguro1<1 and $totalCoaseguro2<1 and $totalDeducible1<1 and $totalDeducible2<1 and $descuentoP<1 and $descuentoA<1){ ?>
       <?php if($mostrar==TRUE){ ?>
 	  
-	
+	  
+                  
+                  
+             
 	  
 	  <?php if($totalAseguradora>-1 and $totalAseguradora>0){ ?>
-      <a href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
-&amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;precioVenta=<?php echo $totalAseguradora;?>&amp;modoPago=<?php if($_GET['devolucion']=='si'){echo 'devolucionAseguradora';}else{ echo 'cxc';} ?>&amp;transaccion=<?php echo $my['codigoTT'];?>&amp;tipoTransaccion=aseguradora&amp;tipoPago=<?php echo $tipoPago;?>&amp;devolucion=<?php echo $_GET['devolucion'];?>&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>','ventana7','800','380','yes');"> <?php echo '$'.number_format($totalAseguradora,2);?></a>
-      <?php } else { echo '<img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />';}?>
+<?php             
+##CANDADOS 11oct2013    
+
+    
+if($u3<1 or $u5<1 or $u6<1 or $u7<1 or $u8<1 or $u10<1){   ?>                 
+<a href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
+&amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;precioVenta=<?php echo $totalAseguradora;?>&amp;modoPago=<?php if($_GET['devolucion']=='si'){echo 'devolucionAseguradora';}else{ echo 'cxc';} ?>&amp;transaccion=<?php echo $my['codigoTT'];?>&amp;tipoTransaccion=aseguradora&amp;tipoPago=<?php echo $tipoPago;?>&amp;devolucion=<?php echo $_GET['devolucion'];?>&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>','ventana7','800','380','yes');"> 
+<?php    echo '$'.number_format($totalAseguradora,2); ?>
+</a>
+    <?php }else{
+    echo '$'.number_format($totalAseguradora,2);    
+    } ?>                 
+                  
+      <?php } else {$u1=2; echo '<img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />';}?>
 
 
 
@@ -3562,10 +3836,11 @@ $tipoPago='Cuentas por Cobrar';
       <?php } else{?>
       <?php echo '$'.number_format($totalAseguradora,2);?>
       <?php } ?>
-      <?php } else{?>
+      <?php } else{ $u2=1;?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
+
 
 
 
@@ -3597,7 +3872,7 @@ $tA=$totalAseguradora*-1;
       </blink></a>
       <div align="center">
         <?php } else { echo '$'.number_format($tA,2);}?>
-        <?php } else{?>
+        <?php } else{$u3=1;?>
         <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
         <?php } ?>
       </div>
@@ -3616,7 +3891,7 @@ $tA=$totalAseguradora*-1;
 	
 	
 	
-
+	
 	
 	
 	
@@ -3626,7 +3901,7 @@ $tA=$totalAseguradora*-1;
 	
 	
     <td  ><div align="center"><span >
-      <?php
+      <?php 
  if($totalParticular<-1){  
 $tP=$totalParticular*-1;
 ?>
@@ -3645,7 +3920,7 @@ $tP=$totalParticular*-1;
             
       <div align="center">
         <?php } else { echo '$'.number_format($tP,2);}?>
-        <?php } else{?>
+        <?php } else{$u4=1;?>
         <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
         <?php } ?>
       </div>
@@ -3657,58 +3932,62 @@ $tP=$totalParticular*-1;
     
     
     <td  ><div align="center"><span >
-      <?php if($totalCoaseguro1>1){ 	?>
+      <?php if($totalCoaseguro1>=1){ 	?>
       <?php if($mostrar==TRUE){ ?>
       <a href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
 &amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;transaccion=<?php echo $coaseguro1;?>&amp;precioVenta=<?php echo $totalCoaseguro1;?>&amp;modoPago=efectivo&amp;tipoTransaccion=coaseguro&amp;numCoaseguro=PCoaS1&amp;tipoPago=Efectivo&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>','ventana7','480','380','yes');"> <?php echo '$'.number_format($totalCoaseguro1,2);?></a>
       <?php } else { echo '$'.number_format($totalCoaseguro1,2);}?>
-      <?php } else{?>
+      <?php } else{$u5=1;?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
     
     
-
+    
+    
+    
+    
     
     <td  ><div align="center"><span >
-      <?php if($totalCoaseguro2>1){ ?>
+      <?php if($totalCoaseguro2>=1){ ?>
       <?php if($mostrar==TRUE){ ?>
       <a href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
 &amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;transaccion=<?php echo $coaseguro2;?>&amp;precioVenta=<?php echo $totalCoaseguro2;?>&amp;modoPago=efectivo&amp;tipoTransaccion=coaseguro&amp;numCoaseguro=PCoaS2&amp;tipoPago=Efectivo&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>','ventana7','480','380','yes');"> <?php echo '$'.number_format($totalCoaseguro2,2);?></a>
       <?php } else { echo '$'.number_format($totalCoaseguro2,2);}?>
-      <?php } else{?>
+      <?php } else{$u6=1;?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
     
     
     
-
+    
     
     
     
     <td  ><div align="center"><span >
-      <?php if($totalDeducible1>1){ ?>
+      <?php if($totalDeducible1>=1){ ?>
       <?php if($mostrar==TRUE){ ?>
       <a href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
 &amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;transaccion=<?php echo $deducible1;?>&amp;precioVenta=<?php echo $totalDeducible1;?>&amp;modoPago=efectivo&amp;tipoTransaccion=coaseguro&amp;numCoaseguro=PDeduSeg1&amp;tipoPago=Efectivo&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>','ventana7','480','380','yes');"> <?php echo '$'.number_format($totalDeducible1,2);?></a>
       <?php } else { echo '$'.number_format($totalDeducible1,2);}?>
-      <?php } else{?>
+      <?php } else{$u7=1;?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
     
-
+    
+    
     
     
     
     <td  ><div align="center"><span >
-      <?php if($totalDeducible2>1){ ?>
+      <?php if($totalDeducible2>=1){ ?>
       <?php if($mostrar==TRUE){ ?>
       <a href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
 &amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;transaccion=<?php echo $deducible2;?>&amp;precioVenta=<?php echo $totalDeducible2;?>&amp;modoPago=efectivo&amp;tipoTransaccion=coaseguro&amp;numCoaseguro=PDeduSeg2&amp;tipoPago=Efectivo&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>','ventana7','480','380','yes');"> <?php echo '$'.number_format($totalDeducible2,2);?></a>
       <?php } else { echo '$'.number_format($totalDeducible2,2);}?>
-      <?php } else{?>
+      <?php } else{$u8=1;?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
@@ -3717,37 +3996,93 @@ $tP=$totalParticular*-1;
     
     
     
-
+    
+    
     <td  >
         <div align="center">
             <span >
-      <?php if($descuentoP>1){ ?>
+      <?php if($descuentoP>=1){ ?>
       <?php if($mostrar==TRUE){ ?>
       <a href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
 &amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;transaccion=<?php echo $descuentoParticular;?>&amp;precioVenta=<?php echo $descuentoP;?>&amp;modoPago=descuentos&amp;tipoPago=descuentos&amp;descuento=particular&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>','ventana7','480','380','yes');"> 
     <?php echo '<span class="precio1"><blink>$'.number_format($descuentoP,2).'</blink></span>';?>
       </a>
       <?php } else { echo '$'.number_format($descuentoP,2);}?>
-      <?php } else{?>
+      <?php } else{$u9=1;?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
     
     
     
-
     
     
     
     <td  ><div align="center"><span >
-      <?php if($descuentoA>1){ ?>
+      <?php
+      ##ACTUALIZADO EN 1oct2013 LAS DEVOLUCIONES ESTAN PROHIBIDAS
+      ###DESCUENTO SOBRE CONVENIO
+      ###FUNCIONA CON LOS EXTERNO
+                    //echo $myrow1d['tipoPaciente'];
+if($myrow1d['statusDevolucion']!='si'){                    
+                    $sql5= "
+                    SELECT *
+                    FROM
+                    convenios
+                    WHERE
+                    entidad='".$entidad."'
+                        and
+                    numCliente =  '".$myrow1d['clientePrincipal']."'
+                    AND
+                    (departamento='".$myrow1d['almacen']."' or departamento='*')
+                    AND
+                    tipoConvenio='descuentoConvenio'
+                    and
+                    ('".$fecha1."'>=fechaInicial and '".$fecha1."'<=fechaFinal)
+                    ";
+                    $result5=mysql_db_query($basedatos,$sql5);
+                    $myrow5= mysql_fetch_array($result5);
+                    
+                    if($myrow5['costo']>0){
+                    //$tA total de aseguradora
+                    //echo $myrow5['costo'].'  '.$tA;  
+                    
+                    $s6a= "Select * From catTTCaja WHERE  descuentoAseguradoras='si'  ";
+                    $rs6a=mysql_db_query($basedatos,$s6a);
+                    $my6a = mysql_fetch_array($rs6a); 
+                    
+                    
+                    $sSQL3a= "
+                    SELECT sum((cantidadAseguradora*cantidad)+(ivaAseguradora*cantidad)) as totales 
+                    From cargosCuentaPaciente 
+                    WHERE  entidad='".$entidad."' and folioVenta = '".$_GET['folioVenta']."' 
+                    and tipoTransaccion='".$my6a['codigoTT']."'";
+                    $result3a=mysql_db_query($basedatos,$sSQL3a);
+                    $myrow3a = mysql_fetch_array($result3a);    
+                    if($myrow3a['totales']>0){$descuentoHecho=$myrow3a['totales'];}                    
+                    
+                    $descripcionTransaccion=$my6a['descripcion'];
+                    $descuentoAseguradora=$my6a['codigoTT'];
+                    
+                    
+                    $cantidadDescuento=($myrow5['costo']*0.01)*$totalAseguradora;
+                    //$descuentoA=($totalAseguradora-$cantidadDescuento)-$descuentoHecho;
+                    $descuentoA=$cantidadDescuento-$descuentoHecho;
+                    
+}}
+      ##############
+      ?>
+                
+                
+                
+      <?php if($descuentoA>=1){ ?>
       <?php if($mostrar==TRUE){ ?>
       <a href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
 &amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;transaccion=<?php echo $descuentoAseguradora;?>&amp;precioVenta=<?php echo $descuentoA;?>&amp;modoPago=descuentos&amp;tipoPago=descuentos&amp;descuento=aseguradora&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>','ventana7','480','380','yes');"> 
     <?php echo '<span class="precio1"><blink>$'.number_format($descuentoA,2).'</blink></span>';?>
       </a>
       <?php } else { echo '$'.number_format($descuentoA,2);}?>
-      <?php } else{?>
+      <?php } else{$u10=1;?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
@@ -3756,7 +4091,26 @@ $tP=$totalParticular*-1;
 
 
     
-    
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
     
     
 <?php 
@@ -3776,13 +4130,34 @@ $tpb='devolucionBeneficencia';
       <a href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
 &amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;transaccion=<?php echo $transB;?>&amp;precioVenta=<?php echo $ben;?>&amp;modoPago=<?php echo $mp;?>&amp;tipoPago=<?php echo $tpb;?>&descripcionTransaccion=beneficencia&status=<?php echo $myrow3['status'];?>&beneficencia=si&statusBeneficencia=si','ventana7','480','380','yes');"> <?php echo '$'.number_format($ben,2);?></a>
       <?php } else { echo '$'.number_format($ben,2);}?>
-      <?php } else{?>
+      <?php } else{$u11=1;?>
       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
       <?php } ?>
     </span></div></td>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
   </tr>
 
 </table>
+  </div>
+
+
+
 <p>&nbsp;</p>
 
 
@@ -3798,7 +4173,7 @@ echo '<br>';
 }else{ //no tiene limites?>
 
 <?php 
-//MOSTRAR EFECTUAR TRANSACCIONES
+//MOSTRAR EFECTUAR TRANSACCIONESheight="48" 
 $descripcionTransaccion=$_GET['descripcionTransaccion'];
 //******ULTIMO TIRON**************
 
@@ -3816,20 +4191,45 @@ $myrow3 = mysql_fetch_array($result3);
 ?>
 <p>&nbsp;</p>
 
-<a name="final">
-    </a>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container"> 
 <table width="590" border="0" align="center" cellpadding="4" cellspacing="0" class="table table-striped" style="border: 1px solid #CCC;">
   <tr>
-    <th colspan="2" ><b >Particular</b></th>
+    <th colspan="2" ><b ><small>Particular</small></b></th>
     <th width="75" >&nbsp;</th>
-     <th colspan="2" ><b >Beneficencia</b></th>
+     <th colspan="2" ><b ><small>Beneficencia</small></b></th>
     <th width="75" >&nbsp;</th>
-    <th colspan="2" ><b >Aseguradora</b></th>
+    <th colspan="2" ><b ><small>Aseguradora</small></b></th>
   </tr>
   <tr>
-    <td width="137" ><span >Cargos</span></td>
-    <td width="75"><span >
+    <td width="137" ><small >Cargos</small></td>
+    <td width="75"><small >
       <?php 
 	  
 $sSQLpartc= "Select sum(cantidadParticular*cantidad) as totalParticular, sum(ivaParticular*cantidad) as totalIVA From cargosCuentaPaciente WHERE entidad='".$entidad."' and folioVenta = '".$_GET['folioVenta']."' 
@@ -3854,12 +4254,12 @@ $myrowparta = mysql_fetch_array($resultparta);
 
 echo  '$'.number_format($myrowpartc['totalParticular']-$myrowparta['totalParticular'],2);
 ?>
-    </span></td>
+    </small></td>
     <td>&nbsp;</td>
     
     
-        <td width="137" ><span >Cargos</span></td>
-    <td width="75"><span >
+        <td width="137" ><small >Cargos</small></td>
+    <td width="75"><small >
       <?php 
 	  
 $sSQLbenec= "Select sum(cantidadBeneficencia*cantidad) as totalParticular, sum(ivaBeneficencia*cantidad) as totalIVA From cargosCuentaPaciente WHERE entidad='".$entidad."' and folioVenta = '".$_GET['folioVenta']."' 
@@ -3885,7 +4285,7 @@ $myrowbenea = mysql_fetch_array($resultbenea);
 
 echo  '$'.number_format($myrowbenec['totalParticular']-$myrowbenea['totalParticular'],2);
 ?>
-    </span></td>
+    </small></td>
     <td>&nbsp;</td>
     
     
@@ -3899,8 +4299,8 @@ echo  '$'.number_format($myrowbenec['totalParticular']-$myrowbenea['totalParticu
     
     
     
-    <td width="116"><span >Cargos</span></td>
-    <td width="153"><span >
+    <td width="116"><small >Cargos</small></td>
+    <td width="153"><small >
       <?php 
 	  
 $sSQLasegc= "Select sum(cantidadAseguradora*cantidad) as totalAseguradora, sum(ivaAseguradora*cantidad) as totalIVA From cargosCuentaPaciente WHERE entidad='".$entidad."' and folioVenta = '".$_GET['folioVenta']."' 
@@ -3926,7 +4326,7 @@ $myrowasega = mysql_fetch_array($resultasega);
 
 echo  '$'.number_format($myrowasegc['totalAseguradora']-$myrowasega['totalAseguradora'],2);
 ?>
-    </span></td>
+    </small></td>
     
     
     
@@ -3946,14 +4346,14 @@ echo  '$'.number_format($myrowasegc['totalAseguradora']-$myrowasega['totalAsegur
   
   
   <tr>
-    <td><span >IVA</span></td>
-    <td><span ><?php echo  '$'.number_format($myrowpartc['totalIVA']-$myrowparta['totalIVA'],2);?></span></td>
+    <td><small >IVA</small></td>
+    <td><small ><?php echo  '$'.number_format($myrowpartc['totalIVA']-$myrowparta['totalIVA'],2);?></small></td>
     <td>&nbsp;</td>
-    <td><span >IVA</span></td>
-    <td><span ><?php echo  '$'.number_format($myrowbenec['totalIVA']-$myrowbenea['totalIVA'],2);?></span></td>
+    <td><small >IVA</small></td>
+    <td><small ><?php echo  '$'.number_format($myrowbenec['totalIVA']-$myrowbenea['totalIVA'],2);?></small></td>
     <td>&nbsp;</td>
-    <td><span >IVA</span></td>
-    <td><span ><?php echo  '$'.number_format($myrowasegc['totalIVA']-$myrowasega['totalIVA'],2);?></span></td>
+    <td><small >IVA</small></td>
+    <td><small ><?php echo  '$'.number_format($myrowasegc['totalIVA']-$myrowasega['totalIVA'],2);?></small></td>
   </tr>
   
   
@@ -3961,21 +4361,21 @@ echo  '$'.number_format($myrowasegc['totalAseguradora']-$myrowasega['totalAsegur
   
   
   <tr>
-    <td><span >Total</span></td>
-    <td><span ><?php echo  '$'.number_format(($myrowpartc['totalParticular']+$myrowpartc['totalIVA'])-($myrowparta['totalParticular']+$myrowparta['totalIVA']),2);?></span></td>
+    <td><small >Total</small></td>
+    <td><small ><?php echo  '$'.number_format(($myrowpartc['totalParticular']+$myrowpartc['totalIVA'])-($myrowparta['totalParticular']+$myrowparta['totalIVA']),2);?></small></td>
     <td>&nbsp;</td>
     
-    <td><span >Total</span></td>
-    <td><span ><?php echo  '$'.number_format(($myrowbenec['totalParticular']+$myrowbenec['totalIVA'])-($myrowbenea['totalParticular']+$myrowbenea['totalIVA']),2);?></span></td>
+    <td><small >Total</small></td>
+    <td><small ><?php echo  '$'.number_format(($myrowbenec['totalParticular']+$myrowbenec['totalIVA'])-($myrowbenea['totalParticular']+$myrowbenea['totalIVA']),2);?></small></td>
     <td>&nbsp;</td>
     
     
     
-    <td><span >Total</span></td>
-    <td><span ><?php echo  '$'.number_format(($myrowasegc['totalAseguradora']+$myrowasegc['totalIVA'])-($myrowasega['totalAseguradora']+$myrowasega['totalIVA']),2);?></span></td>
+    <td><small >Total</small></td>
+    <td><small ><?php echo  '$'.number_format(($myrowasegc['totalAseguradora']+$myrowasegc['totalIVA'])-($myrowasega['totalAseguradora']+$myrowasega['totalIVA']),2);?></small></td>
   </tr>
 </table>
-
+  </div>
 
 
 
@@ -3983,21 +4383,29 @@ echo  '$'.number_format($myrowasegc['totalAseguradora']-$myrowasega['totalAsegur
 
 
 <p>&nbsp;</p>
+
+
+  <div class="container"> 
 <table width="900" class="table table-striped" style="border: 1px solid #CCC;">
 
   <tr >
-    <th width="76"  ><div align="center">Part</div></th>
-    <th width="76"  ><div align="center">Aseg</div></th>
-    <th width="111"  ><div align="center">Regreso Aseg</div></th>
-    <th width="104"  ><div align="center">Regreso Part </div></th>
-    <th width="89"  ><div align="center">C1</div></th>
-    <th width="100"  ><div align="center">C2</div></th>
-    <th width="95"  ><div align="center">D1</div></th>
-    <th width="88"  ><div align="center">D2</div></th>
-    <th width="77"  ><div align="center">Desc Part </div></th>
-    <th width="84"  ><div align="center">Desc Aseg </div></th>
-    <th width="84"  ><div align="center">Beneficencia</div></th>
+    <th width="76"  ><div align="center"><small>Part</small></div></th>
+    <th width="76"  ><div align="center"><small>Aseg</small></div></th>
+    <th width="111"  ><div align="center"><small>Regreso Aseg</small></div></th>
+    <th width="104"  ><div align="center"><small>Regreso Part</small></div></th>
+    <th width="89"  ><div align="center"><small>C1</small></div></th>
+    <th width="100"  ><div align="center"><small>C2</small></div></th>
+    <th width="95"  ><div align="center"><small>D1</small></div></th>
+    <th width="88"  ><div align="center"><small>D2</small></div></th>
+    <th width="77"  ><div align="center"><small>Desc Part</small></div></th>
+    <th width="84"  ><div align="center"><small>Desc Aseg</small></div></th>
+    <th width="84"  ><div align="center"><small>Beneficencia</small></div></th>
   </tr>
+    
+    
+    
+    
+    
   <tr  >
     
       
@@ -4209,11 +4617,16 @@ $tipoPago='Efectivo';
 &amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;transaccion=particular&amp;precioVenta=<?php echo $totalParticular;?>&amp;modoPago=<?php if($_GET['devolucion']=='si'){echo 'devolucionParticular';}else{ echo 'efectivo';} ?>&amp;tipoTransaccion=particular&amp;tipoPago=<?php echo $tipoPago;?>&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>&statusCortesia=<?php echo $myrow3['statusCortesia'];?>&tipoDevolucion=<?php echo $tipoDevolucion;?>&beneficencia=<?php
 if($myrow3['activaBeneficencia']=='si'){ echo 'si';}?>&statusBeneficencia=<?php if($myrow3['activaBeneficencia']=='si'){ echo 'si';}?>&activaBeneficencia=<?php if($myrow3['activaBeneficencia']=='si'){ echo 'si';}?>&caso=<?php echo $caso;?>','ventana7','680','380','yes');">
 <?php 
+##CANDADOS 11oct2013    
+
+    
+if($u4<1 or $u9<1 or $u11<1){   
 echo '$'.number_format($totalParticular,2);
+}
 ?>
 </a>
-<?php } else{       
-echo '<img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />';}?>
+<?php } else{ $u1=1;      
+echo '<img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />';} ?>
 
 
 
@@ -4421,7 +4834,7 @@ $tipoPago='Cuentas por Cobrar';
                   
                   
 <?php 
-###COMPROBACIONES OBLIGATORIAS 1Oct2013
+###COMPROBACIONES OBLIGATORIAS 1Oct2013 si no son devoluciones
                   $sql5car= "
                     SELECT *
                     FROM
@@ -4441,6 +4854,8 @@ $tipoPago='Cuentas por Cobrar';
                     $myrow5car= mysql_fetch_array($result5car);
                     
                     if($myrow5car['costo']>0){
+if($myrow1d['statusDevolucion']!='si'){
+
                     $sSQL3a= "
                     SELECT sum((cantidadAseguradora*cantidad)+(ivaAseguradora*cantidad)) as totales 
                     From cargosCuentaPaciente 
@@ -4457,15 +4872,20 @@ $tipoPago='Cuentas por Cobrar';
                     //$candadoA=($totalAseguradora-$cantidadDescuento)-$descuentoHecho;
                     $candadoA=$descuentoAseguradora-$descuentoHecho;
                     }
-
+}
 
 
 
 ?>                  
 	  
 	  <?php if($totalAseguradora>-1 and $totalAseguradora>0){ ?>
-    <?php 
-    if($candadoA<1){?>                  
+  
+            
+<?php             
+##CANDADOS 11oct2013    
+
+    
+if($u3<1 or $u5<1 or $u6<1 or $u7<1 or $u8<1 or $u10<1){   ?>            
 <a href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
 &amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;precioVenta=<?php echo $totalAseguradora;?>&amp;modoPago=<?php if($_GET['devolucion']=='si'){echo 'devolucionAseguradora';}else{ echo 'cxc';} ?>&amp;transaccion=<?php echo $my['codigoTT'];?>&amp;tipoTransaccion=aseguradora&amp;tipoPago=<?php echo $tipoPago;?>&amp;devolucion=<?php echo $_GET['devolucion'];?>&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>','ventana7','800','380','yes');"> 
 <?php    echo '$'.number_format($totalAseguradora,2); ?>
@@ -4474,7 +4894,8 @@ $tipoPago='Cuentas por Cobrar';
     echo '$'.number_format($totalAseguradora,2);    
     } ?>                 
                   
-      <?php } else { echo '<img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />';}?>
+      <?php } else { $u2=1;  //echo '<img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />';
+      }?>
 
 
 
@@ -4554,6 +4975,15 @@ $tA=$totalAseguradora*-1;
 $tP=$totalParticular*-1;
 ?>
       <?php if($mostrar==TRUE){ ?>
+                
+                
+                
+<?php 
+
+##CANDADOS 11oct2013    
+
+    
+if($u4<1 or $u9<1 or $u11<1){   ?>
       <a href="javascript:nueva('/sima/INGRESOS%20HLC/caja/ventanaAplicaPagoInternos.php?usuario=<?php echo $_GET['usuario'];?>&amp;numeroE=<?php echo $numeroE; ?>
 &amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;transaccion=regreso&amp;precioVenta=<?php echo $tP;?>&amp;modoPago=regresoParticular&amp;tipoTransaccion=particular&amp;tipoPago=regresoParticular&descripcionTransaccion=<?php echo $descripcionTransaccion;?>&status=<?php echo $myrow3['status'];?>','ventana7','400','800','yes');"></a></span></div>     
         <span >
@@ -4564,6 +4994,7 @@ $tP=$totalParticular*-1;
      <?php echo '$'.number_format($tP,2);?>
      </div>
       </blink></a>
+<?php } ?>        
             
             
       <div align="center">
@@ -4668,11 +5099,11 @@ $tP=$totalParticular*-1;
     
     <td  ><div align="center"><span >
       <?php
-      ##ACTUALIZADO EN 1oct2013
+      ##ACTUALIZADO EN 1oct2013 LAS DEVOLUCIONES ESTAN PROHIBIDAS
       ###DESCUENTO SOBRE CONVENIO
       ###FUNCIONA CON LOS EXTERNO
                     //echo $myrow1d['tipoPaciente'];
-                    
+if($myrow1d['statusDevolucion']!='si'){                    
                     $sql5= "
                     SELECT *
                     FROM
@@ -4717,7 +5148,7 @@ $tP=$totalParticular*-1;
                     //$descuentoA=($totalAseguradora-$cantidadDescuento)-$descuentoHecho;
                     $descuentoA=$cantidadDescuento-$descuentoHecho;
                     
-                    }
+}}
       ##############
       ?>
                 
@@ -4779,7 +5210,9 @@ $tpb='devolucionBeneficencia';
 &amp;almacen=<?php echo $_GET['almacenSolicitante']; ?>&amp;almacenFuente=<?php echo $almacen; ?>&amp;seguro=<?php echo $seguroT; ?>&amp;nCuenta=<?php echo $keyClientesInternos;?>&amp;tipoCliente=<?php echo 'particular';?>&amp;tipoVenta=<?php echo $folioVENTA;?>&amp;folioVenta=<?php echo $myrow3['folioVenta'];?>&amp;keyClientesInternos=<?php echo $keyClientesInternos;?>&amp;rand=<?php echo rand(1000,10000000);?>&amp;paquete=<?php echo $_GET['paquete'];?>&amp;transaccion=<?php echo $transB;?>&amp;precioVenta=<?php echo $ben;?>&amp;modoPago=<?php echo $mp;?>&amp;tipoPago=<?php echo $tpb;?>&descripcionTransaccion=beneficencia&status=<?php echo $myrow3['status'];?>&beneficencia=si&statusBeneficencia=si','ventana7','480','380','yes');"> <?php echo '$'.number_format($ben,2);?></a>
       <?php } else { echo '$'.number_format($ben,2);}?>
       <?php } else{$u11=1;?>
-      <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />
+     
+      <!--aqui va la imagen de que todo esta bien -->           
+       <img src="/sima/imagenes/btns/checkbtn.png" width="18" height="18" />          
       <?php } ?>
     </span></div></td>
       
@@ -4800,8 +5233,102 @@ $tpb='devolucionBeneficencia';
       
       
   </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    <!--
+    <tr>
+     
+        <td>
+            <div align="center">
+                <img src="../bt/img/candado.jpeg" width="42" height="42" />
+            </div>
+        </td>
+        
+        <td>2</td>    
+        
+        
+        <td>3
+          <div align="center">
+                <img src="../bt/img/candado.jpeg" width="42" height="42" />
+            </div>    
+        </td>    
+        
+        
+        <td>4
+          <div align="center">
+                <img src="../bt/img/candado.jpeg" width="42" height="42" />
+            </div>
+        </td>    
+       
+        
+        <td>5
+        <div align="center">
+        <img src="../bt/img/candado.jpeg" width="42" height="42" />
+        </div>
+        </td>    
+        
+        
+        <td>6
+        <div align="center">
+        <img src="../bt/img/candado.jpeg" width="42" height="42" />
+        </div>
+        </td>  
+        
+        
+        <td>7
+        <div align="center">
+        <img src="../bt/img/candado.jpeg" width="42" height="42" />
+        </div>
+        </td>    
+        
+        <td>8
+        <div align="center">
+        <img src="../bt/img/candado.jpeg" width="42" height="42" />
+        </div>
+        </td>    
+        
+        <td>9
+        <div align="center">
+        <img src="../bt/img/candado.jpeg" width="42" height="42" />
+        </div>
+        </td>
+        
+        <td>10
+        <div align="center">
+        <img src="../bt/img/candado.jpeg" width="42" height="42" />
+        </div>
+        </td>    
+        
+        <td>11
+        <div align="center">
+        <img src="../bt/img/candado.jpeg" width="42" height="42" />
+        </div>
+        </td>    
+        
+    </tr>    
+    
+    -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 </table>
+  </div>
+      
+      
+      
 <p>&nbsp;</p>
     
     
@@ -4818,7 +5345,8 @@ $tpb='devolucionBeneficencia';
   <p align="center">&nbsp;</p>
   <p align="center">
 
-	
+	  </div>      
+  </header>  
 	
 	
 <form  method="post" >
@@ -4886,11 +5414,12 @@ if($totalElementos==11){   ?>
     
     </div>
 </form>
-<script languaje="JavaScript">            
-              document.form1.folioVenta.value=<?php echo $_GET['folioVenta'];?>
-			                document.form1.keyClientesInternos.value=<?php echo $_GET['nT'];?>
-							    document.form1.nT.value=<?php echo $_GET['nT'];?>
-    </script>
+
+
+      
+    
+      
+
     <br>
 </body>
 </html>

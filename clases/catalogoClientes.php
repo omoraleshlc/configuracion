@@ -64,7 +64,7 @@ numCliente,nomCliente,usuario,fecha,nivel,ID_AUXILIAR,ID_CTAMAYOR,
 ciudad,estado,cp,telCasa,telTrabajo,responsable,nombreCorto,
 rfc,pais,calle,colonia,delegacion,banderaCXCT,tipoCliente,entidad,baseParticular,plazoPago,contraRecibo,
 subCliente,clientePrincipal,tipo,pagoEfectivo,credenciales,razonSocial,convenioExclusivo,gpoProducto,requiereExpediente,requiereMatricula,
-saldoInicial,facturacionPreconfigurada,permiteReferidos
+facturacionPreconfigurada,permiteReferidos
 
 ) values ('".$_POST['numCliente']."','".strtoupper($_POST['nomCliente'])."',
 '".$usuario."','".$fecha1."','".$_POST['nivel']."','".$_POST['ID_AUXILIAR']."','".$_POST['ID_CTAMAYOR']."',
@@ -82,7 +82,7 @@ saldoInicial,facturacionPreconfigurada,permiteReferidos
 '".$_POST['delegacion']."',
 '".$_POST['banderaCXCT']."','".$_POST['tipoCliente']."','".$entidad."','".$baseParticular."','".$_POST['plazoPago']."','".$contraRecibo."','".$subCliente."','".$_POST['clientePrincipal']."','".$_POST['tipo']."','".$_POST['pagoEfectivo']."','".$_POST['credenciales']."','".$_POST['razonSocial']."',
 '".$_POST['convenioExclusivo']."',
-    '".$_POST['gpoProducto']."','".$_POST['requiereExpediente']."','".$_POST['requiereMatricula']."','".$_POST['saldoInicial']."'  ,'".$_POST['facturacionPreconfigurada']."',
+    '".$_POST['gpoProducto']."','".$_POST['requiereExpediente']."','".$_POST['requiereMatricula']."','".$_POST['facturacionPreconfigurada']."',
         '".$_POST['permiteReferidos']."')";
 mysql_db_query($basedatos,$agrega);
 echo mysql_error();
@@ -99,7 +99,7 @@ $q = "UPDATE clientes set
     
 permiteReferidos='".$_POST['permiteReferidos']."',
     facturacionPreconfigurada='".$_POST['facturacionPreconfigurada']."',
-    saldoInicial='".$_POST['saldoInicial']."',
+
 gpoProducto='".$_POST['gpoProducto']."',
 credenciales='".$_POST['credenciales']."',
 pagoEfectivo='".$_POST['pagoEfectivo']."',
@@ -305,7 +305,7 @@ $estilos->styles();
 		 echo $ran;
 		 }
 		 ?>"/>
-        ej. Pueden ser Iniciales OAMG1,etc. </div></td></tr>
+        </div></td></tr>
 	
 
 	
@@ -389,11 +389,18 @@ $myrow24 = mysql_fetch_array($result24);
       <td  >&iquest;Se Paga en Efectivo?</td>
       <td  ><input name="pagoEfectivo" type="checkbox" id="pagoEfectivo" value="si" <?php if($myrow2['pagoEfectivo']=='si'){ echo 'checked=""';}?>/></td>
     </tr>
+      
+        
+      
         <?php } ?>
 		
 		
 		
-		
+	      <tr >
+      <td   scope="col">&nbsp;</td>
+      <td  >AUXILIAR </td>
+      <td  ><input name="ID_AUXILIAR" type="text" id="ID_AUXILIAR" value="<?php echo $myrow2['ID_AUXILIAR'];?>"/></td>
+    </tr>  	
 		
 		
 		
@@ -404,6 +411,9 @@ $myrow24 = mysql_fetch_array($result24);
       <td  >&iquest;Tiene Credenciales?</td>
       <td  ><input name="credenciales" type="checkbox" id="credenciales" value="si" <?php if($myrow2['credenciales']=='si'){ echo 'checked=""';}?>/></td>
     </tr>
+      
+
+      
     <tr >
       <td width="1"   scope="col">&nbsp;</td>
       <td  >Nombre del Cliente</td>
