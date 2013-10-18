@@ -49,10 +49,10 @@ $estilo->styles();
 ?>
     
 <?php 
-
-$sSQL2= "Select transacciones From almacenes WHERE almacen = '".$ALMACEN."' ";
-$result2=mysql_db_query($basedatos,$sSQL2);
-$myrow2 = mysql_fetch_array($result2);
+//
+//$sSQL2= "Select transacciones From almacenes WHERE almacen = '".$ALMACEN."' ";
+//$result2=mysql_db_query($basedatos,$sSQL2);
+//$myrow2 = mysql_fetch_array($result2);
 //echo 'actualizar'.$_POST['actualizar'];
 ?>
     
@@ -364,6 +364,18 @@ window.alert("La cuenta se fue a status: <?php echo $_POST['escoje'];?>");
 
 
 </head>
+    
+    
+    
+<?php
+
+$encabezadoFecha=new encabezadoFechas();
+$encabezadoFecha->headDate($fecha1);
+    
+
+
+?>    
+    
 <?php 
 $sSQL= "SELECT *
 FROM

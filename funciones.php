@@ -10730,11 +10730,33 @@ print '</html>';
 class encabezadoFechas{
     
     public function headDate($fecha1){?>
+
+ <!-Hoja de estilos del calendario --> 
+  <link rel="stylesheet" type="text/css" media="all" href="/sima/calendario/calendar-brown.css" title="win2k-cold-1" />
+  <!-- librer�a principal del calendario --> 
+ <script type="text/javascript" src="/sima/calendario/calendar.js"></script> 
+ <!-- librer�a para cargar el lenguaje deseado --> 
+  <script type="text/javascript" src="/sima/calendario/lang/calendar-es.js"></script> 
+  <!-- librer�a que declara la funci�n Calendar.setup, que ayuda a generar un calendario en unas pocas l�neas de c�digo --> 
+  <script type="text/javascript" src="/sima/calendario/calendar-setup.js"></script> 
+
         <div class="panel panel-primary">
   <!-- Default panel contents -->
   <div class="panel-heading"></div>     
      
-<table class="table"> 
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <table class="table"> 
     
     <th><div class="col-lg-6"><small>Fecha Inicial</small></div></th>    
     <th><div class="col-lg-6"><small>Fecha Final</small></div></th>
@@ -10771,18 +10793,17 @@ class encabezadoFechas{
  
   <div class="col-lg-6">
        <div class="input-group">
-      <input id="campo_fecha2" name="fechaFinal" type="text" value="<?php
+       <input id="campo_fecha2" name="fechaFinal" type="text" value="<?php
 		 if($_POST['fechaFinal']){
 		 echo $_POST['fechaFinal'];
 		 } else {
 		 echo $fecha1;
 		 }
 		 ?>" class="form-control" >
-         <span class="input-group-btn">
+        <span class="input-group-btn">
         <button class="btn btn-default btn-link btn-lg" type="button" id="lanzador2"><span class="glyphicon glyphicon-calendar"></span></button>
-      </span>
-              
-          </div>
+      </span> 
+       </div>
   </div>
 
 
@@ -10790,21 +10811,24 @@ class encabezadoFechas{
 </td>
 
 
+
+
+<td>
+   <div class="col-lg-6">            
+<input data-loading-text="Cargando..." class="btn btn-primary" type="submit" name="generarReporte"  value="Generar Reporte" />
+</div>
+</td>
+
 </tr>
     
     
-    <tr>
-        <td>
-<div class="col-lg-6">            
-<input data-loading-text="Cargando..." class="btn btn-primary" type="submit" name="generarReporte"  value="Generar Reporte" />
-</div>        
-        </td>        
-        <td></td> 
-        
-    </tr>    
+   
      
 </table>     
 </div>
+
+ 
+  
 <?php
     }
     

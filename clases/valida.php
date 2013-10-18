@@ -2518,6 +2518,7 @@ public function styles(){ ?>
     <!-- Placed at the end of the document so the pages load faster -->
 
     <script src="../bt/assets/js/jquery.js"></script>
+    <script src="../bt/js/jquery-1.8.3.min.js"></script>
     <script src="../bt/assets/js/bootstrap-transition.js"></script>
     <script src="../bt/assets/js/bootstrap-alert.js"></script>
     <script src="../bt/assets/js/bootstrap-modal.js"></script>
@@ -2525,7 +2526,7 @@ public function styles(){ ?>
     <script src="../bt/assets/js/bootstrap-scrollspy.js"></script>
     <script src="../bt/assets/js/bootstrap-tab.js"></script>
     <script src="../bt/assets/js/bootstrap-tooltip.js"></script>
-    <script src="../bt/bt/assets/js/bootstrap-popover.js"></script>
+    <script src="../bt/assets/js/bootstrap-popover.js"></script>
     <script src="../bt/assets/js/bootstrap-button.js"></script>
     <script src="../bt/assets/js/bootstrap-collapse.js"></script>
     <script src="../bt/assets/js/bootstrap-carousel.js"></script>
@@ -2553,7 +2554,68 @@ public function styles(){ ?>
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../bt/assets/ico/apple-touch-icon-114-precomposed.png">
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../bt/assets/ico/apple-touch-icon-72-precomposed.png">
                     <link rel="apple-touch-icon-precomposed" href="../bt/assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="../imagenes/favicon.ico">
+                                   <link rel="shortcut icon" href="../bt/assets/ico/favicon.png">
+  
+
+    
+<!--barra separadora -->
+<link href="../bt/docs.css" rel="stylesheet"></link>
+
+
+<?php /*
+$nombreSitio='sima';
+$RUTASW= $_SERVER['SERVER_NAME'].'/'.$nombreSitio.'/';
+  
+    ?>
+<link href="<?php echo $RUTASW;?>bt/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo $RUTASW;?>bt/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="<?php echo $RUTASW;?>bt/css/prettify.css" rel="stylesheet">
+    <link rel="shortcut icon" href="<?php echo $RUTASW;?>imagenes/LOGOHLC.png">   
+          <!-- Le styles -->
+
+
+  
+<!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="<?php echo $RUTASW;?>bt/js/jquery-1.8.3.min.js"></script>
+    <script src="<?php echo $RUTASW;?>bt/assets/js/jquery.js"></script>
+    <script src="<?php echo $RUTASW;?>bt/assets/js/bootstrap-transition.js"></script>
+    <script src="<?php echo $RUTASW;?>bt/assets/js/bootstrap-alert.js"></script>
+    <script src="<?php echo $RUTASW;?>bt/assets/js/bootstrap-modal.js"></script>
+    <script src="<?php echo $RUTASW;?>bt/assets/js/bootstrap-dropdown.js"></script>
+    <script src="<?php echo $RUTASW;?>bt/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="<?php echo $RUTASW;?>bt/assets/js/bootstrap-tab.js"></script>
+    <script src="<?php echo $RUTASW;?>bt/assets/js/bootstrap-tooltip.js"></script>
+    <script src="<?php echo $RUTASW;?>bt/bt/assets/js/bootstrap-popover.js"></script>
+    <script src="<?php echo $RUTASW;?>bt/assets/js/bootstrap-button.js"></script>
+    <script src="<?php echo $RUTASW;?>bt/assets/js/bootstrap-collapse.js"></script>
+    <script src="<?php echo $RUTASW;?>bt/assets/js/bootstrap-carousel.js"></script>
+    <script src="<?php echo $RUTASW;?>bt/assets/js/bootstrap-typeahead.js"></script>
+    <script src="<?php echo $RUTASW;?>bt/assets/js/bootstrap-affix.js"></script>
+  
+
+
+
+
+
+    <script src="<?php echo $RUTASW;?>bt/js/holder/holder.js"></script>
+    <script src="<?php echo $RUTASW;?>bt/assets/js/prettify.js"></script>
+    <link href="<?php echo $RUTASW;?>bt/assets/login-box.css" rel="stylesheet" type="text/css" />
+    <script src="<?php echo $RUTASW;?>bt/assets/js/application.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo $RUTASW;?>bt/js/styles3.css"></link>
+    
+
+<link href="<?php echo $RUTASW;?>bt/css/armazon.css" media="screen" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="<?php echo $RUTASW;?>bt/assets/m4a.js"></script>   
+<link href="<?php echo $RUTASW;?>bt/css/bootstrap-editable.css" media="screen" rel="stylesheet" type="text/css"></link>
+
+<!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo $RUTASW;?>bt/js/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo $RUTASW;?>bt/assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo $RUTASW;?>bt/assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="<?php echo $RUTASW;?>bt/assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="<?php echo $RUTASW;?>imagenes/favicon.ico">
   
 <!--bootrsap 3 -->
 
@@ -2561,7 +2623,9 @@ public function styles(){ ?>
 
     
 <!--barra separadora -->
-<link href="../bt/docs.css" rel="stylesheet"></link>
+<link href="<?php echo $RUTASW;?>bt/docs.css" rel="stylesheet"></link>
+<?php */ ?>
+
 <?php 
 } 
 }
