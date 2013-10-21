@@ -3,7 +3,7 @@ class validator {
 
 static public function medico($usuario,$basedatos){
 
-
+$usuario=mysql_real_escape_string($usuario);
 $sSQL1= "Select medico From usuarios WHERE usuario ='".$usuario."' ";
 $result1=mysql_db_query($basedatos,$sSQL1);
 $myrow1 = mysql_fetch_array($result1);
@@ -11,7 +11,7 @@ return $myrow1['medico'];
 }
 
 static public function tipoUsuario($usuario,$basedatos){
-
+$usuario=mysql_real_escape_string($usuario);
 
 $sSQL1= "Select tipoUsuario From usuarios WHERE usuario ='".$usuario."' ";
 $result1=mysql_db_query($basedatos,$sSQL1);
@@ -21,6 +21,7 @@ return $myrow1['tipoUsuario'];
 
 
 public function entidad($usuario,$basedatos){
+$usuario=mysql_real_escape_string($usuario);    
 $sSQL1= "Select entidad From usuarios WHERE usuario ='".$usuario."' ";
 $result1=mysql_db_query($basedatos,$sSQL1);
 $myrow1 = mysql_fetch_array($result1);
@@ -72,7 +73,7 @@ session_destroy();
 }//cierra funcion sesion es activas
 
 static public function checallave($usuario,$basedatos){
-
+$usuario=mysql_real_escape_string($usuario);
 $sSQL1= "Select usuario From usuarios WHERE usuario = '".$usuario."' and llave!='' and status='activo'";
 $result1=mysql_db_query($basedatos,$sSQL1);
 $myrow1 = mysql_fetch_array($result1);
@@ -271,7 +272,7 @@ echo '<META HTTP-EQUIV="Refresh"
 }
 
 public function destruyeSesion($usuario,$hora1,$fecha1,$basedatos){
-
+$usuario=mysql_real_escape_string($usuario);
 
 $q = "UPDATE usuarios set 
 status='inactivo',
@@ -307,6 +308,7 @@ window.onerror=function(m,u,l)
 
 
 static function destruirSesion($llavePrimaria,$usuario,$basedatos,$db_conn){
+$usuario=mysql_real_escape_string($usuario);    
 //**********************parte de oracle*************************/
 $actualiza="update pedro.usuario
 set 
@@ -331,6 +333,7 @@ mysql_close();
 
 
 public function validaOracle2($username,$basedatos,$llavePrimaria,$db_conn){
+$username=mysql_real_escape_string($username);    
 $crypt=$passwd;
 $sSQL1= "Select * From usuarios WHERE usuario ='".$username."' and llave='".$llavePrimaria."'";
 $result1=mysql_db_query($basedatos,$sSQL1);
@@ -348,6 +351,7 @@ static function conectaOracle($db_conecta){
 
 
 static function banderaOracle1($username,$db_conn){
+    $username=mysql_real_escape_string($username); 
 $actualiza="update pedro.usuario
 set 
 sesion =null,
@@ -360,6 +364,7 @@ OCICommit($db_conn);
 }
 
 static function banderaOracle2($username,$db_conn){
+    $username=mysql_real_escape_string($username); 
 $actualiza="update pedro.usuario
 set 
 sesion =null,
@@ -377,7 +382,7 @@ OCICommit($db_conn);
 class muestraSesion{
 
 static public function sesionActiva($usuario,$basedatos,$ALMACEN){
-
+$usuario=mysql_real_escape_string($usuario); 
 echo '<body class="style12">';
 echo ' <div align="center">';
 $sSQL1= "Select * From usuarios WHERE usuario ='".$usuario."' ";
@@ -393,7 +398,7 @@ echo $ALMACEN;
 
 class tipoUsuario{
 public function tipoDeUsuario($usuario,$basedatos,$ALMACEN){
-
+$usuario=mysql_real_escape_string($usuario); 
 $sSQL1= "Select * From usuarios WHERE usuario ='".$usuario."' ";
 $result1=mysql_db_query($basedatos,$sSQL1);
 $myrow1 = mysql_fetch_array($result1);
@@ -465,7 +470,7 @@ class muestraEstilos{
 public function styles(){ ?>
 <style type="text/css">
 
-@charset "utf-8";
+
 /* CSS Document */
 
 .syntax_comment {
@@ -2522,7 +2527,7 @@ public function styles(){ ?>
     <script src="../bt/assets/js/bootstrap-transition.js"></script>
     <script src="../bt/assets/js/bootstrap-alert.js"></script>
     <script src="../bt/assets/js/bootstrap-modal.js"></script>
-    <script src="../bt/assets/js/bootstrap-dropdown.js"></script>
+    <script src="../bt/bootstrap-dropdown.js"></script>
     <script src="../bt/assets/js/bootstrap-scrollspy.js"></script>
     <script src="../bt/assets/js/bootstrap-tab.js"></script>
     <script src="../bt/assets/js/bootstrap-tooltip.js"></script>

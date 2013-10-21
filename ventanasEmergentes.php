@@ -13,6 +13,11 @@ $validaSesiones=new validator();
 /* $ip=new resuelveIP();
 $ip=$ip->ip();  */
 $ip = $_SERVER['REMOTE_ADDR']; 
+$_POST['username']=mysql_real_escape_string($_POST['username']);
+$_POST['password']=mysql_real_escape_string($_POST['password']);
+        
+        
+        
 validator::javascript();
 $ID_EJERCICIOM=validator::ejercicio($ID_EJERCICIOM1,$basedatos,$db_conn);
 
