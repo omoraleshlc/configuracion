@@ -10814,9 +10814,9 @@ class encabezadoFechas{
 
 
 <td>
-   <div class="col-lg-6">            
-<input data-loading-text="Cargando..." class="btn btn-primary" type="submit" name="generarReporte"  value="Generar Reporte" />
-</div>
+          
+<input data-loading-text="Cargando..." class="btn btn-mini" type="submit" name="generarReporte"  value="Generar Reporte" />
+
 </td>
 
 </tr>
