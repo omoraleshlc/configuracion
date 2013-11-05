@@ -10767,18 +10767,19 @@ class encabezadoFechas{
 <td>    
 
 
-  <div class="col-lg-6">
+  <div class="col-lg-5">
   <div class="input-group">
-      <input  type="text" name="fechaInicial" id="campo_fecha1" value="<?php
+      <input   type="text" name="fechaInicial" id="campo_fecha1" value="<?php
 		 if($_POST['fechaInicial']){
 		 echo $_POST['fechaInicial'];
 		 } else {
 		 echo $fecha1;
 		 }
-		 ?>" class="form-control" ></input>
-         <span class="input-group-btn">
-<button class="btn btn-default btn-link btn-lg" type="button" id="lanzador1"><span class="glyphicon glyphicon-calendar"></span></button>
+		 ?>" class="form-control btn-sm" ></input>
+         <span class="input-group-btn btn-sm">
+<button class="btn btn-default btn-link btn-sm" type="button" id="lanzador1"><span class="glyphicon glyphicon-calendar"></span></button>
          </span>
+          
   </div>
    
   </div><!-- /.col-lg-6 -->
@@ -10791,7 +10792,7 @@ class encabezadoFechas{
 <td> 
     
  
-  <div class="col-lg-6">
+  <div class="col-lg-5">
        <div class="input-group">
        <input id="campo_fecha2" name="fechaFinal" type="text" value="<?php
 		 if($_POST['fechaFinal']){
@@ -10799,9 +10800,9 @@ class encabezadoFechas{
 		 } else {
 		 echo $fecha1;
 		 }
-		 ?>" class="form-control" >
-        <span class="input-group-btn">
-        <button class="btn btn-default btn-link btn-lg" type="button" id="lanzador2"><span class="glyphicon glyphicon-calendar"></span></button>
+		 ?>" class="form-control btn-sm" >
+        <span class="input-group-btn btn-sm">
+        <button class="btn btn-primary btn-link btn-sm" type="button" id="lanzador2"><span class="glyphicon glyphicon-calendar"></span></button>
       </span> 
        </div>
   </div>
@@ -10815,7 +10816,7 @@ class encabezadoFechas{
 
 <td>
           
-<input data-loading-text="Cargando..." class="btn btn-mini" type="submit" name="generarReporte"  value="Generar Reporte" />
+<input data-loading-text="Cargando..." class="btn btn-primary btn-sm" type="submit" name="generarReporte"  value="Generar Reporte" />
 
 </td>
 
